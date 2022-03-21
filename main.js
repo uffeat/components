@@ -28,6 +28,10 @@ japIndex.addComponent(
   settingsNavLink,
 );
 
+// Button:
+const button1 = new components.JapButton({text: "Button 1"});
+japIndex.addComponent({slot: 'main'}, button1);
+
 
 
 
