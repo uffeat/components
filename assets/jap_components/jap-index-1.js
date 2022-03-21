@@ -12,7 +12,7 @@ class JapIndex1 extends JapBaseSlots {
     :host {
       --headerHeight: 70px;
       --sideWidth: 300px;
-      --sideTransitionTime: 400ms
+      --sideTransitionTime: 400ms;
     }
     
     .page {

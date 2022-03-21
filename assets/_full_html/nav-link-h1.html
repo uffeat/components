@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="../styles/components.css">
+
+<style>
+  @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+  a {
+    display: flex;
+    font-family: var(--fontFamily0);
+    font-size: var(--fontSizeL);
+    text-decoration: none;
+    color: var(--darkGray);
+    transition: background-color var(--transitionTimeM), color var(--transitionTimeM);
+  }
+
+  a:hover {
+    background-color: var(--lightGray);
+  }
+
+  a.selected,
+  a:focus {
+    color: var(--black);
+    background-color: var(--mediumGray);
+  }
+
+  .text {
+    padding: var(--paddingL);
+  }
+
+  .material-icons {
+    font-size: 24px;
+    width: 30px;
+    color: pink;
+  }
+</style>
+<a href="#">
+  <span class="text">Stuff</span>
+</a>
