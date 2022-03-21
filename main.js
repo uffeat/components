@@ -19,8 +19,8 @@ japIndex.addComponent(
 );
 
 // Top nav links:
-const userNavLink = new components.JapNavLink("User", {key: 'user', style: 'h2'});
-const settingsNavLink = new components.JapNavLink("Settings", {key: 'setting', style: 'h2'});
+const userNavLink = new components.JapNavLink("User", {key: 'user', style: 'h1'});
+const settingsNavLink = new components.JapNavLink("Settings", {key: 'setting', style: 'h1'});
 
 japIndex.addComponent(
   {slot: 'top'},

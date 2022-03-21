@@ -52,64 +52,14 @@ class JapNavLink extends JapBase {
       `;
     }
     else if (style === 'h1') {
-      console.log("here")
       this.html = `
       <style>
         @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
         :host {
-          --hrExcess: 2px;
-          --hrDisplacementV: 8px;
-        }
-        
-        a {
-          position: relative;
-          font-family: var(--fontFamily0);
-          font-size: var(--fontSizeL);
-          text-decoration: none;
-          white-space: nowrap;
-          color: var(--white);
-          padding: var(--hrDisplacementV) 2px;
-          margin: 0 2px;
-        }
-        
-        hr {
-          position: absolute;
-          bottom: calc(-1 * var(--hrDisplacementV));
-          left: calc(-1*var(--hrExcess));
-          width: calc(100% + 2*var(--hrExcess));
-          background-color: var(--mediumGray);
-          border: 1px solid var(--mediumGray);
-          border-radius: 1px;
-          transform: scaleX(0);
-          transition: transform 80ms ease-out;
-        }
-        
-        a:hover hr {
-          transform: scaleX(1);
-        }
-        
-        a.selected hr,
-        a:focus hr {
-          transform: scaleX(1);
-          background-color: var(--white);
-          border-color: var(--white);
-        }
-      </style>
-      <a href="#">
-      <span class="text"></span>
-      <hr>
-      </a>
-      `;
-    } else if (style === 'h2') {
-      this.html = `
-      <style>
-        @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-
-        :host {
-          --transitionTime: 200ms;
           --paddingH: 8px;
           --hrBorderWidth: 2px;
+          --transitionTime: 200ms;
         }
 
         a {
@@ -160,7 +110,6 @@ class JapNavLink extends JapBase {
         <span class="text"></span>
         <hr>
       </a>
-      
       `;
     }
     else {
