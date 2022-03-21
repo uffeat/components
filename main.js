@@ -3,14 +3,16 @@ import * as components from './components.js';
 const log = console.log;
 
 // Frame:
-const japFrame1 = components.japFrame1;
-document.getElementById('root').appendChild(japFrame1);
+const japIndex = new components.JapIndex1();
+japIndex.logo = 'assets/images/logo.svg';
+japIndex.title = 'Jap Components';
+document.getElementById('app').appendChild(japIndex);
 
 // Nav links:
 const introNavLink = new components.JapNavLink("Introduction", {key: 'intro'});
 const galleryNavLink = new components.JapNavLink("Gallery", {key: 'gallery'});
 
-japFrame1.addComponent(
+japIndex.addComponent(
   {slot: 'side'},
   introNavLink, 
   galleryNavLink,

@@ -2,7 +2,7 @@ import { JapBaseSlots } from './jap-base-slots.js';
 
 
 /* Implements frame component with left slide panel. */
-class JapFrame1 extends JapBaseSlots {
+class JapIndex1 extends JapBaseSlots {
   constructor() {
     super({});
     this.html = `
@@ -49,10 +49,26 @@ class JapFrame1 extends JapBaseSlots {
       height: 100%;
       background-color: var(--themeColor);
     }
+
+    a.home {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      color: inherit;
+      text-decoration: none;
+      padding: 0 8px;
+      transition: background-color var(--transitionTimeM);
+    }
+
+    /*
+    a.home:hover {
+      background-color: var(--themeColor);
+    }
+    */
     
     .logo {
       height: 60%;
-      margin: 0 8px;
+      margin: 0 4px 0 0;
     }
     
     .title {
@@ -60,7 +76,7 @@ class JapFrame1 extends JapBaseSlots {
       font-size: var(--fontSizeXL);
       font-weight: var(--fontWeightL);
       padding: 0;
-      margin: 0;
+      margin: 0 0 0 4px;
     }
     
     .top {
@@ -143,8 +159,10 @@ class JapFrame1 extends JapBaseSlots {
     <div class="page">
       <header>
         <button class="material-icons toggle">menu</button>
-        <img src="assets/images/logo.svg" class="logo">
-        <h2 class="title">Japstack</h2> <!-- Controlled from code. -->
+        <a href="#" class="home">
+          <img src="#" class="logo">
+          <h2 class="title">Japstack</h2>
+        </a>
         <div class="top">
           <slot name="top"></slot>
         </div>
@@ -166,6 +184,7 @@ class JapFrame1 extends JapBaseSlots {
     <div>
     `;
     // HTML elements:
+    this._logoElement = this._root.querySelector('.logo');
     this._titleElement = this._root.querySelector('.title');
     this._sideElement = this._root.querySelector('.side');
     this._sideCloseElements = this._root.querySelectorAll('.close');
@@ -181,6 +200,22 @@ class JapFrame1 extends JapBaseSlots {
         this.togglePanel();
       });
     });
+  }
+
+  get logo() {
+    return this._logoElement.src;
+  }
+
+  set logo(url) {
+    this._logoElement.src = url;
+  }
+
+  get title() {
+    return this._titleElement.textContent;
+  }
+
+  set title(text) {
+    this._titleElement.textContent = text;
   }
 
   closePanel() {
@@ -202,9 +237,8 @@ class JapFrame1 extends JapBaseSlots {
 
 }
 
-const componentTag = 'jap-frame-1';
-customElements.get(componentTag) || customElements.define(componentTag, JapFrame1);
+const componentTag = 'jap-index-1';
+customElements.get(componentTag) || customElements.define(componentTag, JapIndex1);
 
-const japFrame1 = new JapFrame1();
 
-export { japFrame1 };
+export { JapIndex1 };
