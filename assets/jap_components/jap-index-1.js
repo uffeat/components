@@ -5,6 +5,9 @@ import { JapBaseSlots } from './jap-base-slots.js';
 class JapIndex1 extends JapBaseSlots {
   constructor() {
     super({});
+
+    this.style.zIndex = 1;  //
+
     this.html = `
     <style>
     @import url('https://fonts.googleapis.com/icon?family=Material+Icons');

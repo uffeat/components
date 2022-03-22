@@ -9,6 +9,10 @@ TODO:
 class JapNavLink extends JapBase {
   constructor(text, { group = 'main', href, key, style = 'v1' }) {
     super({});
+
+    this.style.zIndex = 1;  //
+
+
     if (href && key) {
       throw "Set href OR key - not both.";
     }
@@ -46,6 +50,7 @@ class JapNavLink extends JapBase {
           color: pink;
         }
       </style>
+     
       <a href="#">
       <span class="text"></span>
       </a>
@@ -106,10 +111,15 @@ class JapNavLink extends JapBase {
           transform: scaleX(1);
         }
       </style>
-      <a href="#">
-        <span class="text"></span>
-        <hr>
-      </a>
+      <div style="position: relative; height: 100%;">
+        <a href="#">
+          <span class="text"></span>
+          <hr>
+        </a>
+        <div style="position: absolute; top: 120px; left: -250px; background-color: red; z-index: 130; font-size: 80px">
+          stuff
+        </div>
+      </div>
       `;
     }
     else {
