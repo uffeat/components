@@ -4,9 +4,6 @@ import { JapBase } from './jap-base.js';
 class JapButton extends JapBase {
   constructor({text}) {
     super({});
-
-    this.style.zIndex = -1;  //
-
     this.html = `
     <style>
       input[type="button"],

@@ -6,54 +6,14 @@ TODO:
 */
 
 /* Component for navigation link. */
-class JapNavLink extends JapBase {
-  constructor(text, { group = 'main', href, key, style = 'v1' }) {
+class JapNavLinkH1 extends JapBase {
+  constructor(text, { drop = false, group = 'main', href, key }) {
     super({});
     if (href && key) {
       throw "Set href OR key - not both.";
     }
-    if (style === 'v1') {
-      this.html = `
-      <style>
-        @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-
-        a {
-          display: flex;
-          font-family: var(--fontFamily0);
-          font-size: var(--fontSizeL);
-          text-decoration: none;
-          color: var(--darkGray);
-          transition: background-color var(--transitionTimeM), color var(--transitionTimeM);
-        }
-        
-        a:hover {
-          background-color: var(--lightGray);
-        }
-        
-        a.selected,
-        a:focus {
-          color: var(--black);
-          background-color: var(--mediumGray);
-        }
-        
-        .text {
-          padding: var(--paddingL);
-        }
-        
-        .material-icons {
-          font-size: 24px;
-          width: 30px;
-          color: pink;
-        }
-      </style>
-     
-      <a href="#">
-      <span class="text"></span>
-      </a>
-      `;
-    }
-    else if (style === 'h1') {
-      this.html = `
+    this._drop = drop
+    this.html = `
       <style>
         @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
@@ -123,10 +83,7 @@ class JapNavLink extends JapBase {
 
       </div>
       `;
-    }
-    else {
-      throw `Invalid style '${style}'.`
-    }
+
     this._linkElement = this._root.querySelector('a');
     this._textElement = this._root.querySelector('.text');
     this.text = text || '';
@@ -138,7 +95,7 @@ class JapNavLink extends JapBase {
     if (href) {
       this._linkElement.href = href;
     }
-   
+
   }
 
   _clickHandler(event) {
@@ -171,7 +128,7 @@ class JapNavLink extends JapBase {
   }
 }
 
-const componentTag = 'jap-nav-link';
-customElements.get(componentTag) || customElements.define(componentTag, JapNavLink);
+const componentTag = 'jap-nav-link-h1';
+customElements.get(componentTag) || customElements.define(componentTag, JapNavLinkH1);
 
-export { JapNavLink };
+export { JapNavLinkH1 };
