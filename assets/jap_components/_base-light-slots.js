@@ -1,17 +1,16 @@
 import { _Base } from './_base.js';
-import { _BaseLight } from './_base-light.js'
 
 /* Base class for jap components with slots and without shadow DOM. */
-class _BaseLightSlots extends _BaseLight {
+class _BaseLightSlots extends _Base {
   constructor() {
-    super({});
+    super({shadow: false});
   }
 
   /* Adds component to slot. */
   addComponent(component, slot) {
     // Throw exception if component does not inherit from JapBase or JapBaseLight:
-    if (!(component instanceof _Base) && !(component instanceof _BaseLight)) {
-      throw `'${component}' must be a subclass of _Base or _BaseLight.`;
+    if (!(component instanceof _Base)) {
+      throw `'${component}' must be a subclass of _Base.`;
     }
     this._getSlotElement(slot).appendChild(component);
     component.parentComponent = this;
@@ -24,7 +23,7 @@ class _BaseLightSlots extends _BaseLight {
 
   /* Returns components added to slot. */
   getComponents(slot, names=false) {
-    const components =  [...this._getSlotElement(slot).children].filter(component => (component instanceof JapBase) || (component instanceof JapBaseLight));
+    const components =  [...this._getSlotElement(slot).children].filter(component => component instanceof _Base);
     return names ? components.map(element => element.name) : components;
   }
 

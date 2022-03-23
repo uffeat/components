@@ -7,7 +7,6 @@ class _DataPlugin  {
     this.#component = component;
   }
 
-  
 }
 
 

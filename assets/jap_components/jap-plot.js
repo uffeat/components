@@ -1,4 +1,4 @@
-import { _BaseLight } from './jap-base-light.js';
+import { _Base } from './_base.js';
 /*
 Usage example:
 const japPlot1 = new components.JapPlot();
@@ -12,10 +12,10 @@ TODO:
 */
 
 /* Component for plots */
-class JapPlot extends _BaseLight {
+class JapPlot extends _Base {
   #size;
   constructor() {
-    super({});
+    super({shadow: false});
     Plotly.newPlot( this, [{
       x: [1, 2, 3, 4, 5],
       y: [1, 2, 4, 8, 16] }], {

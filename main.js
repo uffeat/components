@@ -20,6 +20,7 @@ japIndex.addComponent(
   inputTextNavLink,
 );
 
+
 // Top nav links:
 const moreNavLink = new components.JapNavLinkH1Drop("More", {});
 const userNavLink = new components.JapNavLinkH1("User", { key: 'user' });
@@ -32,6 +33,7 @@ japIndex.addComponent(
   settingsNavLink,
 );
 
+
 // Top sub-nav links:
 const exploreNavLink = new components.JapNavLinkV1("Explore", { key: 'explore' });
 const mindNavLink = new components.JapNavLinkV1("Loose your mind", { key: 'mind' });
@@ -41,6 +43,7 @@ moreNavLink.addComponent(
   exploreNavLink,
   mindNavLink
 );
+
 
 
 // Dot

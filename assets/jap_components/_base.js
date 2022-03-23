@@ -1,10 +1,15 @@
-/* Base class for Jap components with shadow DOM and no slots. */
+/* Base class for Jap components with or without shadow DOM and no slots. */
 class _Base extends HTMLElement {
-  constructor({ name = 'no-name' }) {
+  constructor({ name, shadow=true }) {
     super();
     this.name = name;
     this.parentComponent = null;
-    this._root = this.attachShadow({ mode: 'open' });
+    if (shadow) {
+      this._root = this.attachShadow({ mode: 'open' });
+    }
+    else {
+      this._root = this;
+    }
   }
 
   _getHtmlFromTemplateId(templateId) {
@@ -23,9 +28,21 @@ class _Base extends HTMLElement {
     this._root.innerHTML = html || '';  // Falsy html results in empty html (and not e.g., 'undefined').
   }
 
+  get text() {
+    if (this._textElement) {
+      return this._textElement.textContent;
+    }
+  }
+
+  set text(text) {
+    if (this._textElement) {
+      this._textElement.textContent = text;
+    }
+  }
+
   /* Hides component */
   hide() {
-    this.style.diaplay = 'none';
+    this.style.display = 'none';
   }
 
   removeFromParent() {
@@ -38,7 +55,7 @@ class _Base extends HTMLElement {
 
   /* Shows component */
   show() {
-    this.style.diaplay = 'initial';
+    this.style.display = 'initial';
   }
 
 }

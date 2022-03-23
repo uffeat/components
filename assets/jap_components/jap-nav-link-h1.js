@@ -58,16 +58,17 @@ class JapNavLinkH1 extends _Base {
           transform: scaleX(1);
         }
       </style>
-        <a href="#"></a>
+        <a href="#" class="text"></a>
         <hr>
       `;
 
     this._aElement = this._root.querySelector('a');
+    this._textElement = this._root.querySelector('.text');
     this.text = text || '';
     if (key) {
       this.group = group;
       this.key = key;
-      this._aElement.addEventListener('click', this._clickHandler.bind(this));
+      this._aElement.addEventListener('click', this._navHandler.bind(this));
     }
     if (href) {
       this._aElement.href = href;
@@ -75,7 +76,7 @@ class JapNavLinkH1 extends _Base {
 
   }
 
-  _clickHandler(event) {
+  _navHandler(event) {
     const navEvent = new CustomEvent('nav', {
       bubbles: true,
       detail: {

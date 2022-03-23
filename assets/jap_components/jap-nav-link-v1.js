@@ -1,4 +1,5 @@
 import { _Base } from './_base.js';
+import { _NavLinkPlugin } from './_nav-link-plugin.js';
 
 /* 
 TODO:
@@ -9,9 +10,7 @@ TODO:
 class JapNavLinkV1 extends _Base {
   constructor(text, { group = 'main', href, key}) {
     super({});
-    if (href && key) {
-      throw "Set href OR key - not both.";
-    }
+    
       this.html = `
       <style>
         @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
@@ -49,47 +48,10 @@ class JapNavLinkV1 extends _Base {
         <span class="text"></span>
       </a>
       `;
-    this._aElement = this._root.querySelector('a');
-    this._textElement = this._root.querySelector('.text');
+    this._nav_link_plug_in = new _NavLinkPlugin(this, {group, href, key});
     this.text = text || '';
-    if (key) {
-      this.group = group;
-      this.key = key;
-      this._aElement.addEventListener('click', this._clickHandler.bind(this));
-    }
-    if (href) {
-      this._aElement.href = href;
-    }
   }
 
-  _clickHandler(event) {
-    const navEvent = new CustomEvent('nav', {
-      bubbles: true,
-      detail: {
-        key: null,
-      },
-    });
-    navEvent.detail.key = this.key;
-    this.dispatchEvent(navEvent);
-  }
-
-  get text() {
-    return this._textElement.textContent;
-  }
-
-  set text(text) {
-    this._textElement.textContent = text;
-  }
-
-  /* Styles nav link as selected. */
-  select() {
-    this._aElement.classList.add('selected')
-  }
-
-  /* Styles nav link as unselected. */
-  deselect() {
-    this._aElement.classList.remove('selected')
-  }
 }
 
 const componentTag = 'jap-nav-link-v1';
