@@ -5,15 +5,12 @@ import { _Base } from './_base.js';
 class JapInputText extends _Base {
   constructor({}) {
     super({});
-    /* prompt, msg, and lead_icon placed after input to enable sibling selection with respect to input.
-    To preserve the right placement of lead_icon and trail_icon the flex-direction of label is row-reverse
-    (and justify-content: flex-end). */
-
-   
-    /* label has 'required' class + input empty -> '*'-prefix label text (high and low) + message = '*Required'. */
-    /* Not 'validation' per se (no invalid marking). Validation in component code. */
-
-
+    /* Syles notes:
+    - prompt, msg, and lead_icon placed after input to enable sibling selection with respect to input.
+    - To preserve correct position of lead_icon and trail_icon the flex-direction of label is row-reverse
+      (and justify-content: flex-end).
+    - label has 'required' class + input empty -> '*'-prefix for placeholder prompt and message text '*Required'.
+    - Not validation per se (only invalid marking). Validation in component code. */
     this.html = `
     <style>
       @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
@@ -21,6 +18,7 @@ class JapInputText extends _Base {
       :host {
         --fontSize: 16px;
         position: relative;
+        min-width: 280px;
       }
       
       label {
@@ -29,11 +27,10 @@ class JapInputText extends _Base {
         justify-content: flex-end;
         align-items: center;
         background-color: var(--white);
-        
       }
       
       input {
-        min-width: 320px;
+        width: 100%;
         font-family: var(--fontFamily0);
         border-style: solid;
         border-width: 2px;
@@ -70,22 +67,33 @@ class JapInputText extends _Base {
         background-color: inherit;
         font-size: calc(0.8*var(--fontSize));
         color: var(--themeColor);
-        top: calc(-0.75*var(--fontSize) + 0.4*var(--fontSize));
         left: 16px;
+        top: calc(-0.75*var(--fontSize) + 0.4*var(--fontSize));
         padding: 0 6px;
       }
       
       label.required input:placeholder-shown ~ .prompt::after {
         content: "*";
       }
-      
-  
+
+      .msg {
+        position: absolute;
+        font-family: var(--fontFamily0);
+        font-size: calc(0.8*var(--fontSize));
+        color: var(--darkGray);
+        left: 12px;
+        bottom: calc(-1.5*var(--fontSize) + 0.4*var(--fontSize));
+      }
+
+      label.required input:placeholder-shown ~ .msg::before {
+        content: "*Required";
+      }
     </style>
     <label class="required valid">
       
       <input type="text" placeholder=" ">
       <span class="prompt">Prompt</span>
-      
+      <span class="msg"></span>
     </label>
     `;
   }
