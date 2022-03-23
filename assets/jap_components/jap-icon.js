@@ -1,8 +1,8 @@
-import { JapBase } from './_jap-base.js';
+import { _Base } from './_jap-base.js';
 import { getCssVar } from '../utils/style-utils.js';
 
 /* Component for Google icons */
-class JapIcon extends JapBase {
+class JapIcon extends _Base {
   #hoverColor;
   #size;
   constructor(icon) {

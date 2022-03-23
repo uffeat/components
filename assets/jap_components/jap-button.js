@@ -1,7 +1,7 @@
-import { JapBase } from './_base.js';
+import { _Base } from './_base.js';
 
 /* Component for button with ripple effect */
-class JapButton extends JapBase {
+class JapButton extends _Base {
   constructor({text}) {
     super({});
     this.html = `

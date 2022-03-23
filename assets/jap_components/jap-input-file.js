@@ -1,8 +1,8 @@
-import { JapBase } from './_jap-base.js';
+import { _Base } from './_jap-base.js';
 
 
 /* Component for file input */
-class JapInputFile extends JapBase {
+class JapInputFile extends _Base {
   constructor() {
     super({});
     

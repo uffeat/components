@@ -1,8 +1,8 @@
-import { JapBase } from './_base.js';
+import { _Base } from './_base.js';
 import { getCssVar } from '../utils/style-utils.js';
 
 /* Component for text input */
-class JapDot extends JapBase {
+class JapDot extends _Base {
   #size;
   constructor() {
     super({});

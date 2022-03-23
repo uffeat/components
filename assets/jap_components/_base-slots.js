@@ -1,8 +1,8 @@
-import { JapBase } from './_base.js';
-import { JapBaseLight } from './_base-light.js';
+import { _Base } from './_base.js';
+import { _BaseLight } from './_base-light.js';
 
 /* Base class for Jap components with shadow DOM and slots. */
-class JapBaseSlots extends JapBase {
+class _BaseSlots extends _Base {
   constructor() {
     super({});
   }
@@ -11,8 +11,8 @@ class JapBaseSlots extends JapBase {
   addComponent({ clear = false, slot = '' }, ...components) {
     components.forEach(component => {
       // Throw exception if component does not inherit from JapBase or JapBaseLight:
-      if (!(component instanceof JapBase) && !(component instanceof JapBaseLight)) {
-        throw `'${component}' must be a subclass of JapBase or JapBaseLight.`;
+      if (!(component instanceof _Base) && !(component instanceof _BaseLight)) {
+        throw `'${component}' must be a subclass of _Base or _BaseLight.`;
       }
       this._checkSlot(slot);
       if (clear === true) {
@@ -60,4 +60,4 @@ class JapBaseSlots extends JapBase {
 
 }
 
-export { JapBaseSlots };
+export { _BaseSlots };

@@ -1,8 +1,8 @@
-import { JapBase } from './_jap-base.js';
+import { _Base } from './_jap-base.js';
 
 
 /* Component for select input with option for multi-select */
-class JapInputSelect extends JapBase {
+class JapInputSelect extends _Base {
   constructor() {
     super({});
     this.html = `

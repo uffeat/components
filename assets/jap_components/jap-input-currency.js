@@ -1,8 +1,8 @@
-import { JapBase } from './_jap-base.js';
+import { _Base } from './_jap-base.js';
 
 
 /* Component for currency input with internationalization options */
-class JapInputCurrency extends JapBase {
+class JapInputCurrency extends _Base {
   constructor() {
     super({});
     

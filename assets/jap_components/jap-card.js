@@ -1,4 +1,4 @@
-import { JapBase } from './jap-base.js';
+import { _Base } from './jap-base.js';
 
 /* 
 TODO:
@@ -6,7 +6,7 @@ TODO:
 */
 
 /* Implements a data-aware card component with header, body, and footer. */
-class JapCard extends JapBase  {
+class JapCard extends _Base  {
   constructor() {
     super({});
     this.html = `

@@ -1,7 +1,7 @@
-import { JapBase } from './_jap-base.js';
+import { _Base } from './_jap-base.js';
 
 /* Component for text input */
-class JapComponent extends JapBase {
+class JapComponent extends _Base {
   #size;
   constructor() {
     super({});

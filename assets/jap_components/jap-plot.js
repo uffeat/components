@@ -1,4 +1,4 @@
-import { JapBaseLight } from './jap-base-light.js';
+import { _BaseLight } from './jap-base-light.js';
 /*
 Usage example:
 const japPlot1 = new components.JapPlot();
@@ -12,7 +12,7 @@ TODO:
 */
 
 /* Component for plots */
-class JapPlot extends JapBaseLight {
+class JapPlot extends _BaseLight {
   #size;
   constructor() {
     super({});

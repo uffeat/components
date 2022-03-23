@@ -1,9 +1,9 @@
-import { JapBase } from './_jap-base.js';
+import { _Base } from './_jap-base.js';
 
 
 
 /*  */
-class JapForm extends JapBase {
+class JapForm extends _Base {
   constructor() {
     super({});
     this.html = `

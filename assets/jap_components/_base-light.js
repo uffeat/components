@@ -1,6 +1,6 @@
 
 /* Base class for jap components without shadow DOM and no slots. */
-class JapBaseLight extends HTMLElement {
+class _BaseLight extends HTMLElement {
   #html;
   constructor({name='no-name'}) {
     super();
@@ -37,4 +37,4 @@ class JapBaseLight extends HTMLElement {
 
 }
 
-export { JapBaseLight };
+export { _BaseLight };

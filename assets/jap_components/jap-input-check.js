@@ -1,7 +1,7 @@
-import { JapBase } from './_jap-base.js';
+import { _Base } from './_jap-base.js';
 
 /* Component for checkbox input */
-class JapInputCheck extends JapBase {
+class JapInputCheck extends _Base {
   constructor() {
     super({});
     this.html = `

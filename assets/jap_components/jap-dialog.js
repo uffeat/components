@@ -1,4 +1,4 @@
-import { JapBase } from './_jap-base.js';
+import { _Base } from './_jap-base.js';
 
 /* 
 TODO:
@@ -6,7 +6,7 @@ TODO:
 */
 
 /* Component for customizable modal. */
-class JapDialog extends JapBase {
+class JapDialog extends _Base {
   constructor() {
     super({});
     this.html = `

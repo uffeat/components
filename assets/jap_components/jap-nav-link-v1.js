@@ -1,4 +1,4 @@
-import { JapBase } from './_base.js';
+import { _Base } from './_base.js';
 
 /* 
 TODO:
@@ -6,7 +6,7 @@ TODO:
 */
 
 /* Component for navigation link. */
-class JapNavLinkV1 extends JapBase {
+class JapNavLinkV1 extends _Base {
   constructor(text, { group = 'main', href, key}) {
     super({});
     if (href && key) {

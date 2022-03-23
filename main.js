@@ -57,7 +57,7 @@ const inputText1 = new components.JapInputText({});
 japIndex.addEventListener('nav', event => {
   switch (event.target.key) {
     case 'dot':
-      japIndex.addComponent({ clear: true, slot: 'main' }, dot1);
+      japIndex.addComponent({ closePanel: false, clear: true, slot: 'main' }, dot1);
       break;
     case 'button':
       japIndex.addComponent({ clear: true, slot: 'main' }, button1);

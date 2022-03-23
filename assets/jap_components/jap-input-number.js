@@ -1,8 +1,8 @@
-import { JapBase } from './_jap-base.js';
+import { _Base } from './_jap-base.js';
 
 
 /* Component for number input with format options */
-class JapInputNumber extends JapBase {
+class JapInputNumber extends _Base {
   constructor() {
     super({});
     this.html = `

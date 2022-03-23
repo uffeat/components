@@ -3,10 +3,10 @@ TODO:
 - Set url path
 */
 
-import { JapBase } from './jap-base.js';
+import { _Base } from './jap-base.js';
 
 /*  */
-class JapPage extends JapBase  {
+class JapPage extends _Base  {
   constructor({data}) {
     super({});
   }

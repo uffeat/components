@@ -1,8 +1,8 @@
-import { JapBase } from './_jap-base.js';
+import { _Base } from './_jap-base.js';
 
 
 /* Component for date input */
-class JapInputDate extends JapBase {
+class JapInputDate extends _Base {
   constructor() {
     super({});
     

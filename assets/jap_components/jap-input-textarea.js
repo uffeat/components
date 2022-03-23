@@ -1,8 +1,8 @@
-import { JapBase } from './_jap-base.js';
+import { _Base } from './_jap-base.js';
 
 
 /* Component for text input */
-class JapInputText extends JapBase {
+class JapInputText extends _Base {
   constructor() {
     super({});
     /* prompt, msg, and lead_icon placed after input to enable sibling selection with respect to input.

@@ -1,4 +1,4 @@
-import { JapBaseSlots } from './_base-slots.js';
+import { _BaseSlots } from './_base-slots.js';
 
 /* 
 TODO:
@@ -6,7 +6,7 @@ TODO:
 */
 
 /* Component for navigation link. */
-class JapNavLinkH1Drop extends JapBaseSlots {
+class JapNavLinkH1Drop extends _BaseSlots {
   constructor(text, { drop, group = 'main', href, key }) {
     super({});
     if (href && key) {
@@ -72,7 +72,6 @@ class JapNavLinkH1Drop extends JapBaseSlots {
           z-index: var(----zIndexDrop); 
           box-shadow: var(--boxShadow2);
           opacity: 0;
-          transition: opacity var(--transitionTime) ease-out;
         }
 
         .drop.right-align {
@@ -85,13 +84,17 @@ class JapNavLinkH1Drop extends JapBaseSlots {
           opacity: 1;
         }
 
+        .drop:active {
+          display: none !important;
+          opacity: 0 !important;
+        }
+
       </style>
         <a href="#">
           <span class="text"></span>
           <span class="icon material-icons">expand_more</span>
           <div class="drop">
             <hr>
-            stuff
             <slot></slot>
           </div>
         </a>
@@ -100,6 +103,7 @@ class JapNavLinkH1Drop extends JapBaseSlots {
 
     this._aElement = this._root.querySelector('a');
     this._textElement = this._root.querySelector('.text');
+    this._dropElement = this._root.querySelector('.drop');
     this.text = text || '';
     if (key) {
       this.group = group;
@@ -110,6 +114,23 @@ class JapNavLinkH1Drop extends JapBaseSlots {
       this._aElement.href = href;
     }
   }
+
+  /*
+  addComponent({ clear = false, slot = '' }, ...components) {
+    super.addComponent({ clear, slot }, ...components);
+    components.forEach(component => {
+      component.addEventListener('click', event => {
+        this.closeDrop();
+      })
+    });
+  }
+  */
+
+  /*
+  closeDrop() {
+    this._dropElement.classList.add('closed');
+  }
+  */
 
   _clickHandler(event) {
     const navEvent = new CustomEvent('nav', {

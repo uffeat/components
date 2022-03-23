@@ -1,4 +1,4 @@
-import { JapBase } from './_jap-base.js';
+import { _BaseSlots } from './_jap-base-slots.js';
 
 /* 
 TODO:
@@ -6,8 +6,8 @@ TODO:
 
 */
 
-/* Implements a minimal frame component intended for use as a "flat dialog". */
-class JapFrame0 extends JapBase  {
+/* Implements a minimal index component intended for use as a "flat dialog". */
+class JapIndex0 extends _BaseSlots  {
   constructor() {
     super({});
     this.html = `
@@ -40,7 +40,7 @@ class JapFrame0 extends JapBase  {
   
 }
 
-const componentTag = 'jap-frame-0';
-customElements.get(componentTag) || customElements.define(componentTag, JapFrame0);
+const componentTag = 'jap-index-0';
+customElements.get(componentTag) || customElements.define(componentTag, JapIndex0);
 
-export { JapFrame0 };
+export { JapIndex0 };

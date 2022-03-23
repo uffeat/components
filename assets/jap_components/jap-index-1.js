@@ -1,8 +1,8 @@
-import { JapBaseSlots } from './_base-slots.js';
+import { _BaseSlots } from './_base-slots.js';
 
 
-/* Implements frame component with left slide panel. */
-class JapIndex1 extends JapBaseSlots {
+/* Implements index component with left slide panel. */
+class JapIndex1 extends _BaseSlots {
   constructor() {
     super({});
     this.html = `
@@ -163,7 +163,7 @@ class JapIndex1 extends JapBaseSlots {
           <img src="#" class="logo">
           <h2 class="title">Japstack</h2>
         </a>
-        <div class="top">
+        <div class="top close">
           <slot name="top"></slot>
         </div>
       </header>
@@ -200,6 +200,11 @@ class JapIndex1 extends JapBaseSlots {
         this.togglePanel();
       });
     });
+  }
+
+  addComponent({ clear = false, closePanel = true, slot = '' }, ...components) {
+    super.addComponent({ clear, slot }, ...components);
+    closePanel && this.closePanel();
   }
 
   get logo() {

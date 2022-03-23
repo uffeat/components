@@ -1,12 +1,12 @@
-import { JapBase } from './_jap-base.js';
+import { _BaseSlots } from './_jap-base-slots.js';
 
 /* 
 TODO:
 
 */
 
-/* Implements frame component with responsive grid layout. */
-class JapFrame2 extends JapBase  {
+/* Implements index component with responsive grid layout. */
+class JapIndex2 extends _BaseSlots  {
   constructor() {
     super({});
 
@@ -14,7 +14,7 @@ class JapFrame2 extends JapBase  {
   
 }
 
-const componentTag = 'jap-frame-2';
-customElements.get(componentTag) || customElements.define(componentTag, JapFrame2);
+const componentTag = 'jap-index-2';
+customElements.get(componentTag) || customElements.define(componentTag, JapIndex2);
 
-export { JapFrame2 };
+export { JapIndex2 };

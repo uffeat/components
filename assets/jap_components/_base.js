@@ -1,5 +1,5 @@
 /* Base class for Jap components with shadow DOM and no slots. */
-class JapBase extends HTMLElement {
+class _Base extends HTMLElement {
   constructor({ name = 'no-name' }) {
     super();
     this.name = name;
@@ -43,4 +43,4 @@ class JapBase extends HTMLElement {
 
 }
 
-export { JapBase };
+export { _Base };
