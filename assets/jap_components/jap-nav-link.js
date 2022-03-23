@@ -1,4 +1,4 @@
-import { JapBase } from './jap-base.js';
+import { JapBase } from './_base.js';
 
 /* 
 TODO:
@@ -107,21 +107,10 @@ class JapNavLink extends JapBase {
           transform: scaleX(1);
         }
       </style>
-      <div style="position: relative; height: 100%;">
-        <a href="#">
-          <span class="text"></span>
-          <hr>
-        </a>
-
-
-
-        <div style="position: absolute; top: 120px; left: -250px; background-color: red; z-index: 30; font-size: 80px">
-          stuff
-        </div>
-
-
-
-      </div>
+      <a href="#">
+        <span class="text"></span>
+        <hr>
+      </a>
       `;
     }
     else {

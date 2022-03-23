@@ -1,4 +1,4 @@
-import { JapBase } from './jap-base.js';
+import { JapBase } from './_base.js';
 
 /* Component for button with ripple effect */
 class JapButton extends JapBase {

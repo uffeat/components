@@ -1,4 +1,4 @@
-import { JapBase } from './_base.js';
+import { JapBaseSlots } from './_base-slots.js';
 
 /* 
 TODO:
@@ -6,12 +6,13 @@ TODO:
 */
 
 /* Component for navigation link. */
-class JapNavLinkH1 extends JapBase {
-  constructor(text, { group = 'main', href, key }) {
+class JapNavLinkH1Drop extends JapBaseSlots {
+  constructor(text, { drop, group = 'main', href, key }) {
     super({});
     if (href && key) {
       throw "Set href OR key - not both.";
     }
+    this._drop = drop;
     this.html = `
       <style>
         @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
@@ -19,23 +20,26 @@ class JapNavLinkH1 extends JapBase {
         :host {
           --paddingH: 8px;
           --hrBorderWidth: 2px;
-          --transitionTime: 200ms;
+          --transitionTime: 400ms;
+          position: relative; 
         }
 
         a {
           display: flex;
           justify-content: center;
           align-items: center;
+          column-gap: 2px;
           height: 100%;
           font-family: var(--fontFamily0);
           font-size: var(--fontSizeL);
           text-decoration: none;
           white-space: nowrap;
           color: var(--white);
-          padding: 0 var(--paddingH);          
+          padding: 0 var(--paddingH);
+          margin 0;
           transition: background-color var(--transitionTime);
         }
-        
+
         a:hover {
           background-color: var(--themeColor);
         }
@@ -48,21 +52,54 @@ class JapNavLinkH1 extends JapBase {
           transform: scaleX(0);
         }
 
-        a:active ~ hr {
+        a:active hr {
           transition: transform var(--transitionTime) ease-out;
           transform: scaleX(1);
         }
 
-        a.selected ~ hr,
-        a:focus ~ hr {
+        a.selected hr,
+        a:focus hr {
           transform: scaleX(1);
         }
+
+        .drop {
+          position: absolute; 
+          display: none;
+          top: 100%; 
+          left: 0; 
+          min-width: 100%;
+          background-color: var(--white);
+          z-index: var(----zIndexDrop); 
+          box-shadow: var(--boxShadow2);
+          opacity: 0;
+          transition: opacity var(--transitionTime) ease-out;
+        }
+
+        .drop.right-align {
+          left: -100%;
+        }
+
+        a:hover .drop,
+        a:focus .drop {
+          display: initial;
+          opacity: 1;
+        }
+
       </style>
-        <a href="#"></a>
-        <hr>
+        <a href="#">
+          <span class="text"></span>
+          <span class="icon material-icons">expand_more</span>
+          <div class="drop">
+            <hr>
+            stuff
+            <slot></slot>
+          </div>
+        </a>
+        
       `;
 
     this._aElement = this._root.querySelector('a');
+    this._textElement = this._root.querySelector('.text');
     this.text = text || '';
     if (key) {
       this.group = group;
@@ -72,7 +109,6 @@ class JapNavLinkH1 extends JapBase {
     if (href) {
       this._aElement.href = href;
     }
-
   }
 
   _clickHandler(event) {
@@ -87,11 +123,11 @@ class JapNavLinkH1 extends JapBase {
   }
 
   get text() {
-    return this._aElement.textContent;
+    return this._textElement.textContent;
   }
 
   set text(text) {
-    this._aElement.textContent = text;
+    this._textElement.textContent = text;
   }
 
   /* Styles nav link as selected. */
@@ -105,7 +141,7 @@ class JapNavLinkH1 extends JapBase {
   }
 }
 
-const componentTag = 'jap-nav-link-h1';
-customElements.get(componentTag) || customElements.define(componentTag, JapNavLinkH1);
+const componentTag = 'jap-nav-link-h1-drop';
+customElements.get(componentTag) || customElements.define(componentTag, JapNavLinkH1Drop);
 
-export { JapNavLinkH1 };
+export { JapNavLinkH1Drop };

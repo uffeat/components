@@ -1,5 +1,5 @@
-import { JapBase } from './jap-base.js';
-import { JapBaseLight } from './jap-base-light.js';
+import { JapBase } from './_base.js';
+import { JapBaseLight } from './_base-light.js';
 
 /* Base class for Jap components with shadow DOM and slots. */
 class JapBaseSlots extends JapBase {

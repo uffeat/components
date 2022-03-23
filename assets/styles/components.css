@@ -74,6 +74,8 @@
   --transitionTimeM: 600ms;
   --transitionTimeL: 800ms;
 
+  --zIndexDrop: 10;
+
 }
 
 :root * {

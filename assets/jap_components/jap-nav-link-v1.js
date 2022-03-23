@@ -6,63 +6,51 @@ TODO:
 */
 
 /* Component for navigation link. */
-class JapNavLinkH1 extends JapBase {
-  constructor(text, { group = 'main', href, key }) {
+class JapNavLinkV1 extends JapBase {
+  constructor(text, { group = 'main', href, key}) {
     super({});
     if (href && key) {
       throw "Set href OR key - not both.";
     }
-    this.html = `
+      this.html = `
       <style>
         @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
-        :host {
-          --paddingH: 8px;
-          --hrBorderWidth: 2px;
-          --transitionTime: 200ms;
-        }
-
         a {
           display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 100%;
           font-family: var(--fontFamily0);
           font-size: var(--fontSizeL);
           text-decoration: none;
-          white-space: nowrap;
-          color: var(--white);
-          padding: 0 var(--paddingH);          
-          transition: background-color var(--transitionTime);
+          color: var(--darkGray);
+          transition: background-color var(--transitionTimeM), color var(--transitionTimeM);
         }
         
         a:hover {
-          background-color: var(--themeColor);
+          background-color: var(--lightGray);
         }
         
-        hr {
-          height: 0;
-          background-color: var(--white);
-          border: var(--hrBorderWidth) solid var(--white);
-          margin-top: calc(-1*var(--hrBorderWidth));
-          transform: scaleX(0);
+        a.selected,
+        a:focus {
+          color: var(--black);
+          background-color: var(--mediumGray);
         }
-
-        a:active ~ hr {
-          transition: transform var(--transitionTime) ease-out;
-          transform: scaleX(1);
+        
+        .text {
+          padding: var(--paddingL);
         }
-
-        a.selected ~ hr,
-        a:focus ~ hr {
-          transform: scaleX(1);
+        
+        .material-icons {
+          font-size: 24px;
+          width: 30px;
+          color: pink;
         }
       </style>
-        <a href="#"></a>
-        <hr>
+      <a href="#">
+        <span class="text"></span>
+      </a>
       `;
-
     this._aElement = this._root.querySelector('a');
+    this._textElement = this._root.querySelector('.text');
     this.text = text || '';
     if (key) {
       this.group = group;
@@ -72,7 +60,6 @@ class JapNavLinkH1 extends JapBase {
     if (href) {
       this._aElement.href = href;
     }
-
   }
 
   _clickHandler(event) {
@@ -87,11 +74,11 @@ class JapNavLinkH1 extends JapBase {
   }
 
   get text() {
-    return this._aElement.textContent;
+    return this._textElement.textContent;
   }
 
   set text(text) {
-    this._aElement.textContent = text;
+    this._textElement.textContent = text;
   }
 
   /* Styles nav link as selected. */
@@ -105,7 +92,7 @@ class JapNavLinkH1 extends JapBase {
   }
 }
 
-const componentTag = 'jap-nav-link-h1';
-customElements.get(componentTag) || customElements.define(componentTag, JapNavLinkH1);
+const componentTag = 'jap-nav-link-v1';
+customElements.get(componentTag) || customElements.define(componentTag, JapNavLinkV1);
 
-export { JapNavLinkH1 };
+export { JapNavLinkV1 };

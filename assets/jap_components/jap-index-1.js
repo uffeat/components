@@ -1,4 +1,4 @@
-import { JapBaseSlots } from './jap-base-slots.js';
+import { JapBaseSlots } from './_base-slots.js';
 
 
 /* Implements frame component with left slide panel. */

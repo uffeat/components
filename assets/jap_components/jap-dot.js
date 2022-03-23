@@ -1,4 +1,4 @@
-import { JapBase } from './jap-base.js';
+import { JapBase } from './_base.js';
 import { getCssVar } from '../utils/style-utils.js';
 
 /* Component for text input */
