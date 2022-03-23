@@ -22,7 +22,6 @@ class JapNavLinkH1Drop extends _BaseSlots {
           --hrBorderWidth: 2px;
           --transitionTime: 400ms;
           position: relative; 
-          height: 100%;
         }
 
         a {
@@ -30,7 +29,7 @@ class JapNavLinkH1Drop extends _BaseSlots {
           justify-content: center;
           align-items: center;
           column-gap: 2px;
-          height: inherit;
+          height: 100%;
           font-family: var(--fontFamily0);
           font-size: var(--fontSizeL);
           text-decoration: none;
@@ -44,34 +43,6 @@ class JapNavLinkH1Drop extends _BaseSlots {
         a:hover {
           background-color: var(--themeColor);
         }
-
-        .drop {
-          position: absolute; 
-          top: 100%; 
-          left: 0; 
-          min-width: 100%;
-          width: max-content;
-          background-color: var(--white);
-          z-index: var(----zIndexDrop); 
-          box-shadow: var(--boxShadow2);
-          opacity: 0;
-          transition: opacity var(--transitionTime);
-        }
-
-        .drop.right-align {
-          left: -100%;
-        }
-
-        .drop.peak,
-        .drop.open {
-          opacity: 1;
-        }
-
-        .drop.open hr {
-          transition: transform var(--transitionTime) ease-out;
-          transform: scaleX(1) !important;
-        }
-
         
         hr {
           height: 0;
@@ -81,22 +52,52 @@ class JapNavLinkH1Drop extends _BaseSlots {
           transform: scaleX(0);
         }
 
-        /*
-        a:focus ~ .drop.open hr {
+        a:active hr {
           transition: transform var(--transitionTime) ease-out;
-          transform: scaleX(1) !important;
+          transform: scaleX(1);
         }
-        */
+
+        a.selected hr,
+        a:focus hr {
+          transform: scaleX(1);
+        }
+
+        .drop {
+          position: absolute; 
+          display: none;
+          top: 100%; 
+          left: 0; 
+          min-width: 100%;
+          background-color: var(--white);
+          z-index: var(----zIndexDrop); 
+          box-shadow: var(--boxShadow2);
+          opacity: 0;
+        }
+
+        .drop.right-align {
+          left: -100%;
+        }
+
+        a:hover .drop,
+        a:focus .drop {
+          display: initial;
+          opacity: 1;
+        }
+
+        .drop:active {
+          display: none !important;
+          opacity: 0 !important;
+        }
 
       </style>
         <a href="#">
           <span class="text"></span>
           <span class="icon material-icons">expand_more</span>
+          <div class="drop">
+            <hr>
+            <slot></slot>
+          </div>
         </a>
-        <div class="drop">
-          <hr>
-          <slot></slot>
-        </div>
         
       `;
 
@@ -107,20 +108,14 @@ class JapNavLinkH1Drop extends _BaseSlots {
     if (key) {
       this.group = group;
       this.key = key;
-      this._aElement.addEventListener('click', this._navHandler.bind(this));
+      this._aElement.addEventListener('click', this._clickHandler.bind(this));
     }
     if (href) {
       this._aElement.href = href;
     }
-
-    this._aElement.addEventListener('mouseenter', this.peakDrop.bind(this));
-    this.addEventListener('mouseleave', this.unPeakDrop.bind(this));
-    this._aElement.addEventListener('click', this.toggleDrop.bind(this));
-    this.addEventListener('blur', this.closeDrop.bind(this));
-
   }
 
-  
+  /*
   addComponent({ clear = false, slot = '' }, ...components) {
     super.addComponent({ clear, slot }, ...components);
     components.forEach(component => {
@@ -129,37 +124,15 @@ class JapNavLinkH1Drop extends _BaseSlots {
       })
     });
   }
-  
+  */
 
-  
-  unPeakDrop() {
-    this._dropElement.classList.remove('peak');
-  }
-
-  peakDrop() {
-    this._dropElement.classList.add('peak');
-  }
-  
+  /*
   closeDrop() {
-    this._dropElement.classList.remove('peak');
-    this._dropElement.classList.remove('open');
+    this._dropElement.classList.add('closed');
   }
+  */
 
-  openDrop() {
-    this._dropElement.classList.add('open');
-  }
-
-  toggleDrop() {
-    if (this._dropElement.classList.contains('open')) {
-      this.closeDrop();
-    }
-    else {
-      this.openDrop();
-    }
-  }
-  
-
-  _navHandler() {
+  _clickHandler(event) {
     const navEvent = new CustomEvent('nav', {
       bubbles: true,
       detail: {
