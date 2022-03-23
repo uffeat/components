@@ -66,12 +66,6 @@ class JapNavLinkH1Drop extends _BaseSlots {
         .drop.open {
           opacity: 1;
         }
-
-        .drop.open hr {
-          transition: transform var(--transitionTime) ease-out;
-          transform: scaleX(1) !important;
-        }
-
         
         hr {
           height: 0;
@@ -81,13 +75,10 @@ class JapNavLinkH1Drop extends _BaseSlots {
           transform: scaleX(0);
         }
 
-        /*
-        a:focus ~ .drop.open hr {
+        .drop.open hr {
           transition: transform var(--transitionTime) ease-out;
           transform: scaleX(1) !important;
         }
-        */
-
       </style>
         <a href="#">
           <span class="text"></span>
@@ -97,30 +88,28 @@ class JapNavLinkH1Drop extends _BaseSlots {
           <hr>
           <slot></slot>
         </div>
-        
       `;
 
     this._aElement = this._root.querySelector('a');
     this._textElement = this._root.querySelector('.text');
     this._dropElement = this._root.querySelector('.drop');
     this.text = text || '';
+    // Nav events:
     if (key) {
       this.group = group;
       this.key = key;
       this._aElement.addEventListener('click', this._navHandler.bind(this));
     }
-    if (href) {
+    else if (href) {
       this._aElement.href = href;
     }
-
-    this._aElement.addEventListener('mouseenter', this.peakDrop.bind(this));
-    this.addEventListener('mouseleave', this.unPeakDrop.bind(this));
+    // Visual events:
+    this._aElement.addEventListener('mouseenter', this._peakDrop.bind(this));
+    this.addEventListener('mouseleave', this._unPeakDrop.bind(this));
     this._aElement.addEventListener('click', this.toggleDrop.bind(this));
     this.addEventListener('blur', this.closeDrop.bind(this));
-
   }
 
-  
   addComponent({ clear = false, slot = '' }, ...components) {
     super.addComponent({ clear, slot }, ...components);
     components.forEach(component => {
@@ -130,13 +119,11 @@ class JapNavLinkH1Drop extends _BaseSlots {
     });
   }
   
-
-  
-  unPeakDrop() {
+  _unPeakDrop() {
     this._dropElement.classList.remove('peak');
   }
 
-  peakDrop() {
+  _peakDrop() {
     this._dropElement.classList.add('peak');
   }
   
@@ -158,7 +145,6 @@ class JapNavLinkH1Drop extends _BaseSlots {
     }
   }
   
-
   _navHandler() {
     const navEvent = new CustomEvent('nav', {
       bubbles: true,
