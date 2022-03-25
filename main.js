@@ -1,4 +1,5 @@
 import * as components from './components.js';
+import { getProperties } from './component-utils.js';
 
 const log = console.log;
 
@@ -72,6 +73,9 @@ japIndex.addEventListener('nav', event => {
       console.log(event.target.key);
   }
 });
+
+//console.log(getProperties(japIndex, {onlyMethods: true}));
+
 
 
 
