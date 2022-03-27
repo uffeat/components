@@ -1,9 +1,9 @@
 import { settings } from '../_setings.js'
-import { _BaseSlots } from '../_bases/_base-slots.js';
+import { BaseSlots } from '../_bases/base-slots.js';
 
 
 /* Implements index component with left slide panel. */
-class Index1 extends _BaseSlots {
+class Index1 extends BaseSlots {
   constructor() {
     super({});
     this.html = `

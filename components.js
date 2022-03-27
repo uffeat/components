@@ -1,7 +1,7 @@
 /* Enables access to all components via a single statement: import * as components from 'path'; */
 //export * from './assets/_components/button.js';
 export * from './assets/_components/dot.js';
-//export * from './assets/_components/index-1.js';
+export * from './assets/_components/index-1.js';
 //export * from './assets/_components/jap-nav-link-v1.js';
 //export * from './assets/_components/jap-nav-link-h1.js';
 //export * from './assets/_components/jap-nav-link-h1-drop.js';
