@@ -1,5 +1,7 @@
 
 
+// TODO: Replace with inheritance
+
 /*  */
 class _NavLinkPlugin  {
   constructor(component, {group, href, key}) {

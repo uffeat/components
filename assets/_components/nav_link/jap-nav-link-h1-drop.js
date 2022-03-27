@@ -1,4 +1,4 @@
-import { _BaseSlots } from './_base-slots.js';
+import { _BaseSlots } from '../_bases/_base-slots.js';
 
 /* 
 TODO:

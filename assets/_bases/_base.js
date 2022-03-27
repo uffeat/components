@@ -1,4 +1,4 @@
-/* Base class for Jap components with or without shadow DOM and no slots. */
+/* Base class for components with or without shadow DOM and no slots. */
 class _Base extends HTMLElement {
   constructor({ name, shadow=true }) {
     super();
@@ -50,7 +50,9 @@ class _Base extends HTMLElement {
     if (!this.parentComponent) {
       throw `'${this}' has no parent component.`;
     }
-    this.parentComponent.removeComponent(this);
+    this.removeAttribute('slot');
+    this.parentComponent = null;
+    this.remove();
   }
 
   /* Shows component */

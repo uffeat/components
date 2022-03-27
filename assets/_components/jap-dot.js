@@ -1,5 +1,5 @@
-import { _Base } from './_base.js';
-import { getCssVar } from '../utils/style-utils.js';
+import { _Base } from '../_bases/_base.js';
+import { getCssVar } from '../_utils/style-utils.js';
 
 /* Component for text input */
 class JapDot extends _Base {

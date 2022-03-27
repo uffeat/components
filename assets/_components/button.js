@@ -1,7 +1,7 @@
-import { _Base } from './_base.js';
+import { _Base } from '../_bases/_base.js';
 
 /* Component for button with ripple effect */
-class JapButton extends _Base {
+class Button extends _Base {
   constructor({text}) {
     super({});
     this.html = `
@@ -95,9 +95,9 @@ class JapButton extends _Base {
 }
 
 const componentTag = 'jap-button';
-customElements.get(componentTag) || customElements.define(componentTag, JapButton);
+customElements.get(componentTag) || customElements.define(componentTag, Button);
 
-export { JapButton };
+export { Button };
 
 
 

@@ -1,6 +1,6 @@
 import { _Base } from './_base.js';
 
-/* Base class for jap components with slots and without shadow DOM. */
+/* Base class for components with slots and without shadow DOM. */
 class _BaseLightSlots extends _Base {
   constructor() {
     super({shadow: false});
