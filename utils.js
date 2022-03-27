@@ -1,4 +1,4 @@
-import { _Base } from "./assets/jap_components/_base.js";
+import { Base } from "./assets/_bases/base.js";
 
 const getProperties = (component) => {
   const properties = [];

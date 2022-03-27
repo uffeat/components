@@ -1,8 +1,9 @@
+import { settings } from '../_setings.js'
 import { _BaseSlots } from '../_bases/_base-slots.js';
 
 
 /* Implements index component with left slide panel. */
-class JapIndex1 extends _BaseSlots {
+class Index1 extends _BaseSlots {
   constructor() {
     super({});
     this.html = `
@@ -242,8 +243,8 @@ class JapIndex1 extends _BaseSlots {
 
 }
 
-const componentTag = 'jap-index-1';
-customElements.get(componentTag) || customElements.define(componentTag, JapIndex1);
+const componentTag = `${settings.prefix}-index-1`;
+customElements.get(componentTag) || customElements.define(componentTag, Index1);
 
 
-export { JapIndex1 };
+export { Index1 };

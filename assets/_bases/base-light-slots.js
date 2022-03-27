@@ -1,4 +1,4 @@
-import { _Base } from './_base.js';
+import { Base } from './base.js';
 
 /* Base class for components with slots and without shadow DOM. */
 class _BaseLightSlots extends _Base {
@@ -49,4 +49,4 @@ class _BaseLightSlots extends _Base {
 
 }
 
-export { _BaseLightSlots };
+export { BaseLightSlots };

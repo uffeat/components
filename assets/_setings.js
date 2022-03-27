@@ -1,6 +1,6 @@
-settings = {
+const settings = {
   prefix: 'jap',
 }
 
-export {settings};
+export { settings };
 

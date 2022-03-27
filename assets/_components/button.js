@@ -1,3 +1,4 @@
+import { settings } from '../_setings.js'
 import { _Base } from '../_bases/_base.js';
 
 /* Component for button with ripple effect */
@@ -94,7 +95,7 @@ class Button extends _Base {
 
 }
 
-const componentTag = 'jap-button';
+const componentTag = `${settings.prefix}-button`;
 customElements.get(componentTag) || customElements.define(componentTag, Button);
 
 export { Button };

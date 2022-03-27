@@ -1,5 +1,5 @@
 /* Base class for components with or without shadow DOM and no slots. */
-class _Base extends HTMLElement {
+class Base extends HTMLElement {
   constructor({ name, shadow=true }) {
     super();
     this.name = name;
@@ -62,4 +62,4 @@ class _Base extends HTMLElement {
 
 }
 
-export { _Base };
+export { Base };

@@ -1,4 +1,4 @@
-import { _Base } from './_base.js';
+import { Base } from './base.js';
 
 /* Base class for components with shadow DOM and slots. */
 class _BaseSlots extends _Base {
@@ -9,13 +9,16 @@ class _BaseSlots extends _Base {
   /* Adds one or more elemens to slot in this component. */
   addElement({ clear = false, slot = '' }, ...elements) {
     elements.forEach(element => {
-      // Add 'removeFromParent' method to added element.
-      element.removeFromParent = () => {
-        element.removeAttribute('slot');
-        element.parentComponent = null;
-        element.remove();
-        // TODO: Remove the 'removeFromParent' function itself.
+      if (!(component instanceof _Base)) {
+        // Add 'removeFromParent' method to added element.
+        element.removeFromParent = () => {
+          element.removeAttribute('slot');
+          element.parentComponent = null;
+          element.remove();
+          // TODO: Remove the 'removeFromParent' function itself.
+        }
       }
+
       this._checkSlot(slot);
       if (clear === true) {
         this.clear(slot);
@@ -52,4 +55,4 @@ class _BaseSlots extends _Base {
 
 }
 
-export { _BaseSlots };
+export { BaseSlots };

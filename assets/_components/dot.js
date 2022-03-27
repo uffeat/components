@@ -1,8 +1,9 @@
-import { _Base } from '../_bases/_base.js';
+import { settings } from '../_setings.js'
+import { Base } from '../_bases/base.js';
 import { getCssVar } from '../_utils/style-utils.js';
 
 /* Component for text input */
-class JapDot extends _Base {
+class Dot extends Base {
   #size;
   constructor() {
     super({});
@@ -21,10 +22,10 @@ class JapDot extends _Base {
     // HTML elements:
     this._dotElement = this._root.querySelector('span');
     // Defaults:
-    this.backgroundColor = getCssVar('themeColor');
-    this.borderColor = getCssVar('themeColorAlt');
+    this.backgroundColor = getCssVar('themeColor') || 'red';
+    this.borderColor = getCssVar('themeColorAlt')  || 'yellow';
     this.size = 48;
-    this.textColor = getCssVar('black');
+    this.textColor = getCssVar('black') || 'black';
   }
 
   get backgroundColor() {
@@ -74,7 +75,7 @@ class JapDot extends _Base {
 
 }
 
-const componentTag = 'jap-dot';
-customElements.get(componentTag) || customElements.define(componentTag, JapDot);
+const componentTag = `${settings.prefix}-button`;
+customElements.get(componentTag) || customElements.define(componentTag, Dot);
 
-export { JapDot };
+export { Dot };

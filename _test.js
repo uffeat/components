@@ -1,20 +1,30 @@
 import * as components from './components.js';
-import { getProperties } from './component-utils.js';
+import { getProperties } from './utils.js';
 
 const log = console.log;
 
 // Index:
-const japIndex = new components.JapIndex1();
-japIndex.logo = 'assets/images/logo.svg';
-japIndex.title = 'Jap Components';
-document.getElementById('app').appendChild(japIndex);
+//const index = new components.Index1();
+//index.logo = 'assets/_images/logo.svg';
+//index.title = 'Jap Components';
+//document.getElementById('root').appendChild(index);
 
+const dot1 = new components.Dot();
+dot1.backgroundColor = 'red';
+document.getElementById('root').appendChild(dot1);
+
+//index.addElement({ closePanel: false, clear: true, slot: 'main' }, dot1);
+
+
+
+
+/*
 // Side nav links:
 const dotNavLink = new components.JapNavLinkV1("Dot", { key: 'dot' });
 const buttonNavLink = new components.JapNavLinkV1("Button", { key: 'button' });
 const inputTextNavLink = new components.JapNavLinkV1("Text input", { key: 'input-text' });
 
-japIndex.addComponent(
+index.addComponent(
   { slot: 'side' },
   dotNavLink,
   buttonNavLink,
@@ -48,7 +58,7 @@ moreNavLink.addComponent(
 
 
 // Dot
-const dot1 = new components.JapDot();
+const dot1 = new components.Dot();
 
 // Button:
 const button1 = new components.JapButton({ text: "Button 1" });
@@ -61,7 +71,7 @@ const inputText1 = new components.JapInputText({});
 japIndex.addEventListener('nav', event => {
   switch (event.target.key) {
     case 'dot':
-      japIndex.addComponent({ closePanel: false, clear: true, slot: 'main' }, dot1);
+      index.addElement({ closePanel: false, clear: true, slot: 'main' }, dot1);
       break;
     case 'button':
       japIndex.addComponent({ clear: true, slot: 'main' }, button1);
@@ -75,6 +85,8 @@ japIndex.addEventListener('nav', event => {
 });
 
 //console.log(getProperties(japIndex, {onlyMethods: true}));
+
+*/
 
 
 
