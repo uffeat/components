@@ -1,3 +1,5 @@
+import {settings} from '../_settings.js';
+
 /* Base class for components with or without shadow DOM and no slots. */
 class Base extends HTMLElement {
   constructor({ name, shadow=true }) {
@@ -10,6 +12,7 @@ class Base extends HTMLElement {
     else {
       this._root = this;
     }
+    this.classList.add(settings.domClass);
   }
 
   _getHtmlFromTemplateId(templateId) {
@@ -58,10 +61,12 @@ class Base extends HTMLElement {
     this.style.display = 'none';
   }
 
+
   removeFromParent() {
-    // Throw exception if component has no parent component:
     if (!this.parentComponent) {
-      throw `'${this}' has no parent component.`;
+      const err = `'${this}' has no parent component.`;
+      console.log(err);
+      //throw err;
     }
     this.removeAttribute('slot');
     this.parentComponent = null;
