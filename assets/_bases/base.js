@@ -40,6 +40,19 @@ class Base extends HTMLElement {
     }
   }
 
+  getProperties() {
+    const properties = [];
+    const traverseChain = (obj) => {
+      if (obj instanceof Base) {
+        properties.push(...Object.getOwnPropertyNames(obj));
+        let protoType = Object.getPrototypeOf(obj);
+        traverseChain(protoType);
+      }
+    }
+    traverseChain(this);
+    return properties
+  }
+
   /* Hides component */
   hide() {
     this.style.display = 'none';

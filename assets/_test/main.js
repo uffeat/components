@@ -1,11 +1,10 @@
-import * as components from './components.js';
-import { getProperties } from './utils.js';
+import * as components from '../../components.js';
 
 const log = console.log;
 
 // Index:
 const index = new components.Index1();
-//index.logo = 'assets/_images/logo.svg';
+index.logo = 'assets/_test/logo.svg';
 //index.title = 'Jap Components';
 document.getElementById('root').appendChild(index);
 

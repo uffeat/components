@@ -12,10 +12,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap'); /* font-family: 'Noto Sans', sans-serif; */
 
 
-/* Root styling (penetrates shadow DOM) */
+/* Root styling */
 :root {
   font-size: 6.25%; /* Browser font size = 16px -> 1rem = 1px... But stick with px (browser page-zooming is more prevalent than customizing font size) */
 
+  /* Vars (penetrate shadow DOM) */
   --themeColor: #1e87f0;  /* Default value. Controlled from code. */
   --themeColorDark: #1B79D8;  /* Default value. Controlled from code. */
   --themeColorAlt: #ff9800;  /* Default value. Controlled from code. */
@@ -75,7 +76,6 @@
   --transitionTimeL: 800ms;
 
   --zIndexDrop: 10;
-
 }
 
 :root * {

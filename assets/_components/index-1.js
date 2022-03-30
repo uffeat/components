@@ -1,4 +1,4 @@
-import { settings } from '../_setings.js'
+import { settings } from '../_settings.js'
 import { BaseSlots } from '../_bases/base-slots.js';
 
 
@@ -7,9 +7,7 @@ class Index1 extends BaseSlots {
   constructor() {
     super({});
     this.html = `
-    <style>
-    @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-    
+    <style>    
     :host {
       --headerHeight: 70px;
       --sideWidth: 300px;
@@ -35,7 +33,7 @@ class Index1 extends BaseSlots {
       box-shadow: var(--boxShadow0);
     }
     
-    button.toggle {
+    .menu {
       display: flex;
       align-items: center;
       font-size: 32px;
@@ -46,9 +44,19 @@ class Index1 extends BaseSlots {
       transition: background-color var(--transitionTimeM);
     }
     
-    button.toggle:hover {
+    .menu:hover {
       height: 100%;
       background-color: var(--themeColor);
+    }
+
+    .menu > svg {
+      width: 32px;
+      height: 32px;
+    }
+
+    .menu > svg > path {
+      fill: var(--white);
+      stroke: transparent;
     }
 
     a.home {
@@ -159,10 +167,14 @@ class Index1 extends BaseSlots {
     </style>
     <div class="page">
       <header>
-        <button class="material-icons toggle">menu</button>
+        <a class="menu toggle">
+          <svg viewBox="0 0 24 24">
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+          </svg>
+        </a>
         <a href="#" class="home">
-          <img src="#" class="logo">
-          <h2 class="title">Japstack</h2>
+          <img src="" alt="" class="logo">
+          <h2 class="title">Title</h2>
         </a>
         <div class="top close">
           <slot name="top"></slot>
@@ -170,7 +182,8 @@ class Index1 extends BaseSlots {
       </header>
       <div class="side">
         <div class="side-top">
-          <button class="material-icons close">close</button>
+          <button class="close">
+          </button>
         </div>
         <div class="side-body">
           <slot name="side"></slot>

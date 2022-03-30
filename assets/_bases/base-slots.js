@@ -9,7 +9,8 @@ class BaseSlots extends Base {
   /* Adds one or more elemens to slot in this component. */
   addElement({ clear = false, slot = '' }, ...elements) {
     elements.forEach(element => {
-      if (!(component instanceof _Base)) {
+      // TODO: Fix/check: instanceof only captures direct parent class?
+      if (!(component instanceof Base)) {
         // Add 'removeFromParent' method to added element.
         element.removeFromParent = () => {
           element.removeAttribute('slot');

@@ -1,4 +1,4 @@
-import { settings } from '../_setings.js'
+import { settings } from '../_settings.js'
 import { Base } from '../_bases/base.js';
 import { getCssVar } from '../_utils/style-utils.js';
 
