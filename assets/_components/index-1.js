@@ -9,7 +9,7 @@ class Index1 extends BaseSlots {
     this.html = `
     <style>    
     :host {
-      --fontFamily: 'Work Sans', sans-serif;
+      --fontFamily: 'Verdana', sans-serif;
       --headerHeight: 70px;
       --sideWidth: 300px;
       --sideTransitionTime: 400ms;
@@ -37,6 +37,7 @@ class Index1 extends BaseSlots {
     }
     
     .menu {
+      height: 100%;
       display: flex;
       align-items: center;
       font-size: 32px;
@@ -48,7 +49,6 @@ class Index1 extends BaseSlots {
     }
     
     .menu:hover {
-      height: 100%;
       background-color: var(--themeColorAccent);
     }
 
@@ -84,7 +84,7 @@ class Index1 extends BaseSlots {
     }
     
     .title {
-      font-family: 'Lexend', sans-serif;
+      font-family: var(--fontFamily);
       font-size: 24px;
       font-weight: 600;
       padding: 0;
@@ -233,6 +233,14 @@ class Index1 extends BaseSlots {
   addComponent({ clear = false, closePanel = true, slot = '' }, ...components) {
     super.addComponent({ clear, slot }, ...components);
     closePanel && this.closePanel();
+  }
+
+  set fontFamily(fontFamily) {
+    this.style.setProperty(`--fontFamily`, fontFamily);
+  }
+
+  get fontFamily() {
+    return window.getComputedStyle(this).getPropertyValue(`--fontFamily`);
   }
 
   get logo() {
