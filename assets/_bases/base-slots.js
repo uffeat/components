@@ -11,35 +11,31 @@ class BaseSlots extends Base {
   /* Adds one or more elemens to slot in this component. */
   addElement({ clear = false, slot = '' }, ...elements) {
     elements.forEach(element => {
-      if (!element.classList.contains(settings.domClass)) {
-        this._monkeyPatch(element)
-      }
       if (this.hasSlot(slot, true)) {
         if (clear === true) {
           this.clear(slot);
         }
-        element.setAttribute('slot', slot);
-        this.appendChild(element);  // Note: Appends to 'this' (NOT 'this._root').
+          element.setAttribute('slot', slot);
+          this.appendChild(element);  // Note: Appends to 'this' (NOT 'this._root').
         element.parentComponent = this;
       }
     });
   }
 
-  _monkeyPatch(element) {
-    // Add 'removeFromParent' method to added element.
-    console.log("Monkey-patching...")  //
-    element.removeFromParent = () => {
-      element.removeAttribute('slot');
-      element.parentComponent = null;
-      element.remove();
-      delete object.removeFromParent;
+  removeElement(element) {
+    if (!this.querySelectorAll('*').includes(element)) {
+      const err = `Attempted to remove non-added element.`;
+      throw new Error(err);
     }
+    element.removeAttribute('slot');
+    element.parentComponent = null;
+    element.remove();
   }
 
   /* Removes elements added to slot. */
   clear(slot) {
     if (this.hasSlot(slot, true)) {
-      this.getAddedElements(slot).forEach(element => element.removeFromParent());
+      this.getAddedElements(slot).forEach(element => this.removeElement(element));
     }
   }
 

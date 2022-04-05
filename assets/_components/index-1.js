@@ -16,7 +16,16 @@ class Index1 extends BaseSlots {
       --themeColor: darkBlue;
       --themeColorAccent: blue;
     }
+
+    ::slotted(a) {
+      color: green;
+      font-size: 18px;
+    }
     
+    ::slotted(a:hover) {
+      color: red;
+    }
+
     .page {
       display: flex;
       flex-direction: column;
@@ -230,10 +239,6 @@ class Index1 extends BaseSlots {
     });
   }
 
-  addComponent({ clear = false, closePanel = true, slot = '' }, ...components) {
-    super.addComponent({ clear, slot }, ...components);
-    closePanel && this.closePanel();
-  }
 
   set fontFamily(fontFamily) {
     this.style.setProperty(`--fontFamily`, fontFamily);

@@ -75,7 +75,7 @@ class Dot extends Base {
 
 }
 
-const componentTag = `${settings.prefix}-button`;
+const componentTag = `${settings.prefix}-dot`;
 customElements.get(componentTag) || customElements.define(componentTag, Dot);
 
 export { Dot };

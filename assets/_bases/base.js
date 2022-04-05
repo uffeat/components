@@ -1,4 +1,3 @@
-import {settings} from '../_settings.js';
 
 /* Base class for components with or without shadow DOM and no slots. */
 class Base extends HTMLElement {
@@ -12,7 +11,6 @@ class Base extends HTMLElement {
     else {
       this._root = this;
     }
-    this.classList.add(settings.domClass);
   }
 
   _getHtmlFromTemplateId(templateId) {
@@ -43,34 +41,9 @@ class Base extends HTMLElement {
     }
   }
 
-  getProperties() {
-    const properties = [];
-    const traverseChain = (obj) => {
-      if (obj instanceof Base) {
-        properties.push(...Object.getOwnPropertyNames(obj));
-        let protoType = Object.getPrototypeOf(obj);
-        traverseChain(protoType);
-      }
-    }
-    traverseChain(this);
-    return properties
-  }
-
   /* Hides component */
   hide() {
     this.style.display = 'none';
-  }
-
-
-  removeFromParent() {
-    if (!this.parentComponent) {
-      const err = `'${this}' has no parent component.`;
-      console.log(err);
-      //throw err;
-    }
-    this.removeAttribute('slot');
-    this.parentComponent = null;
-    this.remove();
   }
 
   /* Shows component */
