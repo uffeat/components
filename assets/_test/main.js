@@ -12,6 +12,12 @@ const dot1 = new components.Dot();
 
 index.addElement({ closePanel: false, clear: true, slot: 'main' }, dot1);
 
+log(index.headerColor);
+
+index.themeColor = 'orange';
+
+
+
 
 
 

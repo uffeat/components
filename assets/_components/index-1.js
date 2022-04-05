@@ -12,6 +12,8 @@ class Index1 extends BaseSlots {
       --headerHeight: 70px;
       --sideWidth: 300px;
       --sideTransitionTime: 400ms;
+      --themeColor: darkBlue;
+      --themeColorAccent: blue;
     }
     
     .page {
@@ -27,10 +29,10 @@ class Index1 extends BaseSlots {
       height: var(--headerHeight);
       display: flex;
       align-items: center;
-      color: var(--white);
-      background-color: var(--themeColorDark);
+      color: white;
+      background-color: var(--themeColor);
       padding: 0 32px;
-      box-shadow: var(--boxShadow0);
+      box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
     }
     
     .menu {
@@ -38,15 +40,15 @@ class Index1 extends BaseSlots {
       align-items: center;
       font-size: 32px;
       background-color: transparent;
-      color: var(--white);
+      color: white;
       padding: 0 8px;
       border: none;
-      transition: background-color var(--transitionTimeM);
+      transition: background-color 400ms;
     }
     
     .menu:hover {
       height: 100%;
-      background-color: var(--themeColor);
+      background-color: var(--themeColorAccent);
     }
 
     .menu > svg {
@@ -55,7 +57,7 @@ class Index1 extends BaseSlots {
     }
 
     .menu > svg > path {
-      fill: var(--white);
+      fill: white;
       stroke: transparent;
     }
 
@@ -66,12 +68,12 @@ class Index1 extends BaseSlots {
       color: inherit;
       text-decoration: none;
       padding: 0 8px;
-      transition: background-color var(--transitionTimeM);
+      transition: background-color 400ms;
     }
 
     /*
     a.home:hover {
-      background-color: var(--themeColor);
+      background-color: var(--themeColorrAccent);
     }
     */
     
@@ -81,9 +83,9 @@ class Index1 extends BaseSlots {
     }
     
     .title {
-      font-family: var(--fontFamily0);
-      font-size: var(--fontSizeXL);
-      font-weight: var(--fontWeightL);
+      font-family: 'Work Sans', sans-serif;
+      font-size: 24px;
+      font-weight: 600;
       padding: 0;
       margin: 0 0 0 4px;
     }
@@ -118,8 +120,8 @@ class Index1 extends BaseSlots {
       z-index: 10;
       display: flex;
       flex-direction: column;
-      background-color: var(--white);
-      box-shadow: var(--boxShadow2);
+      background-color: white;
+      box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
       transition: transform var(--sideTransitionTime) ease-out;
     }
     
@@ -133,17 +135,25 @@ class Index1 extends BaseSlots {
     }
     
     button.close {
-      font-size: 20px;
-      color: var(--mediumGray);
       background-color: transparent;
       padding: 8px;
       border: none;
       margin-top: 8px;
-      transition: color 2000ms;
     }
-    
-    button.close:hover {
-      color: var(--DarkGray);
+
+    button.close > svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    button.close > svg > path {
+      fill: darkGray;
+      stroke: transparent;
+      transition: fill 400ms;
+    }
+
+    button.close:hover > svg > path {
+      fill: dimGray;
     }
     
     .side-body {
@@ -183,6 +193,9 @@ class Index1 extends BaseSlots {
       <div class="side">
         <div class="side-top">
           <button class="close">
+            <svg viewBox="0 0 24 24">
+              <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/>
+            </svg>
           </button>
         </div>
         <div class="side-body">
@@ -227,6 +240,14 @@ class Index1 extends BaseSlots {
 
   set logo(url) {
     this._logoElement.src = url;
+  }
+
+  get themeColor() {
+    return window.getComputedStyle(this).getPropertyValue(`--themeColor`);
+  }
+
+  set themeColor(color) {
+    this.style.setProperty(`--themeColor`, color);
   }
 
   get title() {
