@@ -9,6 +9,7 @@ class Index1 extends BaseSlots {
     this.html = `
     <style>    
     :host {
+      --fontFamily: 'Work Sans', sans-serif;
       --headerHeight: 70px;
       --sideWidth: 300px;
       --sideTransitionTime: 400ms;
@@ -83,7 +84,7 @@ class Index1 extends BaseSlots {
     }
     
     .title {
-      font-family: 'Work Sans', sans-serif;
+      font-family: 'Lexend', sans-serif;
       font-size: 24px;
       font-weight: 600;
       padding: 0;
@@ -248,6 +249,14 @@ class Index1 extends BaseSlots {
 
   set themeColor(color) {
     this.style.setProperty(`--themeColor`, color);
+  }
+
+  get themeColorAccent() {
+    return window.getComputedStyle(this).getPropertyValue(`--themeColorAccent`);
+  }
+
+  set themeColorAccent(color) {
+    this.style.setProperty(`--themeColorAccent`, color);
   }
 
   get title() {
