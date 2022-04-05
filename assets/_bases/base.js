@@ -11,6 +11,25 @@ class Base extends HTMLElement {
     else {
       this._root = this;
     }
+    // Defaults:
+    this.applyGlobalCssVars('fontFamily', 'themeColor', 'themeColorAccent')
+  }
+
+  applyGlobalCssVars(...cssVars) {
+    cssVars.forEach(name => {
+      const value = window.getComputedStyle(document.documentElement).getPropertyValue(`--${name}`)
+      if (value) {
+        this.setComponentCssVar(name, value)
+      }
+    });
+  }
+
+  getComponentCssVar(name) {
+    return  window.getComputedStyle(this).getPropertyValue(`--${name}`);
+  }
+
+  setComponentCssVar(name, value) {
+    this.style.setProperty(`--${name}`, value)
   }
 
   _getHtmlFromTemplateId(templateId) {

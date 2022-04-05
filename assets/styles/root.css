@@ -1,24 +1,9 @@
-/* Styles shared among components. Defines fonts, icons and root styling, incl. vars. */
-
-/* Icons */
-@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-
-
-/* Fonts (penetrate shadow DOM) */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap'); /* font-family: 'Poppins', sans-serif; */
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap'); /*  font-family: 'Lexend', sans-serif; */
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap'); /* font-family: 'Work Sans', sans-serif; */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@100;200;300;400;500;600;700;800;900&display=swap'); /* font-family: 'Noto Sans Display', sans-serif; */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap'); /* font-family: 'Noto Sans', sans-serif; */
-
-
-/* Root styling */
 :root {
   font-size: 6.25%; /* Browser font size = 16px -> 1rem = 1px... But stick with px (browser page-zooming is more prevalent than customizing font size) */
 
   /* Vars (penetrate shadow DOM) */
   --themeColor: #1e87f0;  /* Default value. Controlled from code. */
-  --themeColorDark: #1B79D8;  /* Default value. Controlled from code. */
+  --themeColorAccent: #1B79D8;  /* Default value. Controlled from code. */
   --themeColorAlt: #ff9800;  /* Default value. Controlled from code. */
   --themeColorAltDark: #aa0c00;  /* Default value. Controlled from code. */
 
@@ -47,7 +32,7 @@
   --distXL: 16px;
   --distXXL: 32px;
 
-  --fontFamily0: 'Poppins', sans-serif;
+  --fontFamily: 'Poppins', sans-serif;
   --fontFamily1: 'Lexend', sans-serif;
   --fontFamily2: 'Work Sans', sans-serif;
   --fontFamily3: 'Noto Sans Display', sans-serif;
@@ -78,9 +63,11 @@
   --zIndexDrop: 10;
 }
 
+/*
 :root * {
   box-sizing: border-box;
 }
+*/
 
 
 

@@ -17,15 +17,6 @@ class Index1 extends BaseSlots {
       --themeColorAccent: blue;
     }
 
-    ::slotted(a) {
-      color: green;
-      font-size: 18px;
-    }
-    
-    ::slotted(a:hover) {
-      color: red;
-    }
-
     .page {
       display: flex;
       flex-direction: column;
@@ -83,7 +74,7 @@ class Index1 extends BaseSlots {
 
     /*
     a.home:hover {
-      background-color: var(--themeColorrAccent);
+      background-color: var(--themeColorAccent);
     }
     */
     
@@ -105,8 +96,34 @@ class Index1 extends BaseSlots {
       margin-left: auto;
       display: flex;
       justify-content: flex-end;
+      
+    }
+
+    slot[name="top"]::slotted(a) {
+      box-sizing: border-box;
+      height: calc(100% + 1px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      white-space: nowrap;
+      color: white;
+      font-family: var(--fontFamily);
+      font-size: 16px;
+      padding: 0 12px;
+      transition: background-color 200ms;
+      border-bottom: 2px solid transparent;
+      
     }
     
+    slot[name="top"]::slotted(a:hover) {
+      background-color: var(--themeColorAccent) !important;
+    }
+
+    slot[name="top"]::slotted(a:focus) {
+      background-color: var(--themeColorAccent) !important;
+    }
+
+
     main {
       flex-grow: 1;
       padding: 48px 32px;
@@ -167,9 +184,24 @@ class Index1 extends BaseSlots {
     }
     
     .side-body {
+      display: flex;
+      flex-direction: column;
       padding-top: 16px;
     }
+
+    slot[name="side"]::slotted(a) {
+      color: black;
+      font-family: var(--fontFamily);
+      font-size: 16px;
+      padding: 8px 16px;
+      transition: background-color 200ms, color 200ms;
+    }
     
+    slot[name="side"]::slotted(a:hover) {
+      background-color: lightGray !important;
+      color: var(--themeColor);
+    }
+
     @media (min-width: 600px) {
       .side {
         top: var(--headerHeight);
@@ -239,37 +271,12 @@ class Index1 extends BaseSlots {
     });
   }
 
-
-  set fontFamily(fontFamily) {
-    this.style.setProperty(`--fontFamily`, fontFamily);
-  }
-
-  get fontFamily() {
-    return window.getComputedStyle(this).getPropertyValue(`--fontFamily`);
-  }
-
   get logo() {
     return this._logoElement.src;
   }
 
   set logo(url) {
     this._logoElement.src = url;
-  }
-
-  get themeColor() {
-    return window.getComputedStyle(this).getPropertyValue(`--themeColor`);
-  }
-
-  set themeColor(color) {
-    this.style.setProperty(`--themeColor`, color);
-  }
-
-  get themeColorAccent() {
-    return window.getComputedStyle(this).getPropertyValue(`--themeColorAccent`);
-  }
-
-  set themeColorAccent(color) {
-    this.style.setProperty(`--themeColorAccent`, color);
   }
 
   get title() {
