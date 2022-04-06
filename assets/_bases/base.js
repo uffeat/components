@@ -6,6 +6,13 @@ class Base extends HTMLElement {
     this.name = name;
     this.parentComponent = null;
     if (shadow) {
+      this.innerHTML = `
+      <style>
+        a {
+          font-size: 24px;
+        }
+      </style>
+      `;
       this._root = this.attachShadow({ mode: 'open' });
     }
     else {
@@ -45,6 +52,9 @@ class Base extends HTMLElement {
 
   /* Sets component's html. */
   set html(html) {
+
+    // TODO: reset properly.
+
     this._root.innerHTML = html || '';  // Falsy html results in empty html (and not e.g., 'undefined').
   }
 

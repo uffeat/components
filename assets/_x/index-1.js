@@ -52,6 +52,7 @@ class Index1 extends BaseSlots {
       background-color: var(--themeColorAccent);
     }
 
+
     .menu > svg {
       width: 32px;
       height: 32px;
@@ -99,9 +100,9 @@ class Index1 extends BaseSlots {
       
     }
 
-    .top > a {
+    slot[name="top"]::slotted(a) {
       box-sizing: border-box;
-      height: 100%;
+      height: calc(100% + 1px);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -110,7 +111,22 @@ class Index1 extends BaseSlots {
       font-family: var(--fontFamily);
       font-size: 16px;
       padding: 0 12px;
+      transition: background-color 200ms;
+      border-bottom: 2px solid transparent;
+      
     }
+    
+    
+    slot[name="top"]::slotted(a:hover) {
+      background-color: var(--themeColorAccent) !important;
+    }
+    
+
+    /* Does NOT work!!! */
+    slot[name="top"]::slotted(a:focus) {
+      background-color: red !important;
+    }
+
 
     main {
       flex-grow: 1;
@@ -177,7 +193,7 @@ class Index1 extends BaseSlots {
       padding-top: 16px;
     }
 
-    .side-body > a {
+    slot[name="side"]::slotted(a) {
       color: black;
       font-family: var(--fontFamily);
       font-size: 16px;
@@ -185,7 +201,7 @@ class Index1 extends BaseSlots {
       transition: background-color 200ms, color 200ms;
     }
     
-    .side-body > a:hover {
+    slot[name="side"]::slotted(a:hover) {
       background-color: lightGray !important;
       color: var(--themeColor);
     }
@@ -243,9 +259,7 @@ class Index1 extends BaseSlots {
     // HTML elements:
     this._logoElement = this._root.querySelector('.logo');
     this._titleElement = this._root.querySelector('.title');
-    this._topElement = this._root.querySelector('.top');
     this._sideElement = this._root.querySelector('.side');
-    this._sideBodyElement = this._root.querySelector('.side-body');
     this._sideCloseElements = this._root.querySelectorAll('.close');
     this._sideToggleElements = this._root.querySelectorAll('.toggle');
     // Events:
@@ -292,21 +306,6 @@ class Index1 extends BaseSlots {
     else {
       this.closePanel();
     }
-  }
-
-  addElement({ clear = false, slot = 'main' }, ...elements) {
-
-    if (slot === 'top') {
-      elements.forEach(element => this._topElement.appendChild(element))
-      return
-    }
-    else if (slot === 'side') {
-
-
-    }
-
-    super.addElement({ clear, slot }, ...elements)
-
   }
 
 }
