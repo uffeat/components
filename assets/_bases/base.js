@@ -6,7 +6,7 @@ class Base extends HTMLElement {
     super();
     this.classList.add(`${settings.prefix}-component`);
     this.name = name;
-    this.parentComponent = null;
+    this.parent = null;
     if (shadow) {
       this._root = this.attachShadow({
         mode: 'open',

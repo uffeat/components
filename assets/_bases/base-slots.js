@@ -1,5 +1,5 @@
 import { Base } from './base.js';
-import {settings} from '../_settings.js';
+import { settings } from '../_settings.js';
 
 
 /* Base class for components with shadow DOM and slots. */
@@ -8,57 +8,46 @@ class BaseSlots extends Base {
     super({});
   }
 
-  /* Adds one or more elemens to slot in this component. */
-  addElement({ clear = false, slot = '' }, ...elements) {
-    elements.forEach(element => {
-      if (this.hasSlot(slot, true)) {
-        if (clear === true) {
-          this.clear(slot);
-        }
-          element.setAttribute('slot', slot);
-          this.appendChild(element);  // Note: Appends to 'this' (NOT 'this._root').
-        element.parentComponent = this;
-      }
-    });
-  }
-
-  removeElement(element) {
-    if (!this.querySelectorAll('*').includes(element)) {
-      const err = `Attempted to remove non-added element.`;
-      throw new Error(err);
+  /* Adds a component to slot in this component. */
+  addComponent(component, { clear = false, slot = '' }) {
+    if (!this._root.querySelector(`slot[name="${slot}"]`)) {
+      throw new Error(`Slot '${slot}' could not be found.`);
     }
-    element.removeAttribute('slot');
-    element.parentComponent = null;
-    element.remove();
+    if (clear === true) {
+      this.clear(slot);
+    }
+    component.setAttribute('slot', slot);
+    this.appendChild(component);  // Note: Appends to 'this' (NOT 'this._root').
+    component.parent = this;
   }
 
-  /* Removes elements added to slot. */
+  removeComponent(component) {
+    if (!this.querySelectorAll('*').includes(component)) {
+      throw new Error(`Attempted to remove non-added component.`);
+    }
+    component.removeAttribute('slot');
+    component.parent = null;
+    component.remove();
+  }
+
+  /* Removes component added to slot. */
   clear(slot) {
-    if (this.hasSlot(slot, true)) {
-      this.getAddedElements(slot).forEach(element => this.removeElement(element));
-    }
+    this.getComponents(slot).forEach(component => this.removeComponent(component));
   }
 
-  /* Returns elements added to slot. */
-  getAddedElements(slot) {
-    if (this.hasSlot(slot, true)) {
-      return this.querySelectorAll(`*[slot="${slot}"]`);
+  /* Returns components added to slot. */
+  getComponents(slot) {
+    const slotElement = this._root.querySelector(`slot[name="${slot}"]`);
+    if (!slotElement) {
+      throw new Error(`Slot '${slot}' could not be found.`);
     }
+    return slotElement.assignedElements();
+    // return this.querySelectorAll(`*[slot="${slot}"]`);
   }
 
   /* Returns array of slot names. Unnamed slot's name is ''.*/
   getSlots() {
     return [...this._root.querySelectorAll(`slot`)].map(element => element.name);
-  }
-
-  /* Checks if this component has a given slot. */
-  hasSlot(slot, errorOnFalse = false) {
-    const result = this.getSlots().includes(slot);
-    if (errorOnFalse && !result) {
-      const err = `Slot '${slot}' could not be found.`;
-      throw new Error(err);
-    }
-    return result;
   }
 
 }

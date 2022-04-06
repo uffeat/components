@@ -20,6 +20,33 @@ class Link extends Base {
           --themeColorAccent: blue;
         }
 
+        a {
+          font-family: var(--fontFamily);
+          font-size: 16px;
+          text-decoration: none;
+        }
+
+        :host(.h1) a {
+          color: black;
+          padding: 8px 16px;
+          transition: background-color 200ms, color 200ms;
+        }
+
+        :host(.h1) a:hover {
+          background-color: lightGray !important;
+          color: var(--themeColor);
+        }
+
+        :host(.h1) a:focus, 
+        :host(.h1) a.selected {
+          background-color: lightGray !important;
+          color: var(--themeColor);
+        }
+
+        :host(.h1) hr {
+          display: none;
+        }
+        
         :host(.v1) {
           --paddingH: 8px;
           --hrBorderWidth: 2px;
@@ -31,9 +58,6 @@ class Link extends Base {
           justify-content: center;
           align-items: center;
           height: 100%;
-          font-family: var(--fontFamily);
-          font-size: 16px;
-          text-decoration: none;
           white-space: nowrap;
           color: white;
           padding: 0 var(--paddingH);          

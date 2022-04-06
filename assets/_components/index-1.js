@@ -93,34 +93,10 @@ class Index1 extends BaseSlots {
     }
     
     slot[name="top"] {
-      box-sizing: border-box;
       height: 100%;
       margin-left: auto;
       display: flex;
       justify-content: flex-end;
-    }
-
-    slot[name="top"]::slotted(a) {
-      position: relative;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      white-space: nowrap;
-      color: white;
-      font-family: var(--fontFamily);
-      font-size: 16px;
-      padding: 0 12px;
-      transition: background-color 200ms;
-    }
-    
-    slot[name="top"]::slotted(a:hover),
-    slot[name="top"]::slotted(a.selected) {
-      background-color: var(--themeColorAccent) !important;
-    }
-
-    slot[name="top"]::slotted(a.selected) {
-      
     }
     
     main {
@@ -146,6 +122,7 @@ class Index1 extends BaseSlots {
       z-index: 10;
       display: flex;
       flex-direction: column;
+      row-gap: 16px;
       background-color: white;
       box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
       transition: transform var(--sideTransitionTime) ease-out;
@@ -181,21 +158,6 @@ class Index1 extends BaseSlots {
     slot[name="side"] {
       display: flex;
       flex-direction: column;
-      padding-top: 16px;
-    }
-
-    slot[name="side"]::slotted(a) {
-      color: black;
-      font-family: var(--fontFamily);
-      font-size: 16px;
-      padding: 8px 16px;
-      transition: background-color 200ms, color 200ms;
-    }
-    
-    slot[name="side"]::slotted(a:hover),
-    slot[name="side"]::slotted(a.selected) {
-      background-color: lightGray !important;
-      color: var(--themeColor);
     }
 
     @media (min-width: 600px) {
@@ -299,43 +261,18 @@ class Index1 extends BaseSlots {
     }
   }
 
-  addElement({ clear = false, slot = 'main' }, ...elements) {
+  addComponent(component, { clear = false, slot = 'main' }) {
+    /*
     if (slot === 'side') {
-      elements.forEach(element => {
-        element.addEventListener('click', event => {
-          this.querySelectorAll(`a[slot=${element.slot}]`).forEach(element => element.classList.remove('selected'));
-          element.classList.add('selected');
-          this.closePanel();
-        });
-      })
+      component.addEventListener('click', event => {
+        this.querySelectorAll(`a[slot=${component.slot}]`).forEach(component => component.deselect());
+        component.select();
+        this.closePanel();
+      });
     }
-    if (slot === 'top') {
-      elements.forEach(element => {
-        const hrElement = document.createElement('HR')
-        hrElement.style.cssText = `
-          box-sizing: border-box;
-          position: absolute
-          /*display: inline-block;*/
-          /*align-self: flex-end;*/
-          width: 100%;
-          height: 0;
-          /*top: 50%;*/
-          background-color: white;
-          border: 2px solid white;
-          /*margin-top: -2px;*/
-          transform: scaleX(1);
-          /*transform: translateX(-100%);*
-        `
-        element.appendChild(hrElement)
-        element.addEventListener('click', event => {
-          this.querySelectorAll(`a[slot=${element.slot}]`).forEach(element => element.classList.remove('selected'));
-          element.classList.add('selected');
-          this.closePanel();
-        });
-        
-      })
-    }
-    super.addElement({ clear, slot }, ...elements)
+    */
+
+    super.addComponent(component, { clear, slot })
   }
 
 }
