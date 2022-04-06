@@ -1,5 +1,6 @@
 import { settings } from '../_settings.js'
 import { BaseSlots } from '../_bases/base-slots.js';
+import { StylePlugin } from '../_plugins/style-plugin.js'
 
 
 /* Implements index component with left slide panel. */
@@ -10,11 +11,11 @@ class Index1 extends BaseSlots {
     <style>    
     :host {
       --fontFamily: 'Verdana', sans-serif;
+      --themeColor: darkBlue;
+      --themeColorAccent: blue;
       --headerHeight: 70px;
       --sideWidth: 300px;
       --sideTransitionTime: 400ms;
-      --themeColor: darkBlue;
-      --themeColorAccent: blue;
     }
 
     .page {
@@ -91,7 +92,7 @@ class Index1 extends BaseSlots {
       margin: 0 0 0 4px;
     }
     
-    .top {
+    slot[name="top"] {
       height: 100%;
       margin-left: auto;
       display: flex;
@@ -99,9 +100,9 @@ class Index1 extends BaseSlots {
       
     }
 
-    .top > a {
+    slot[name="top"]::slotted(a) {
       box-sizing: border-box;
-      height: 100%;
+      height: calc(100% + 1px);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -110,6 +111,13 @@ class Index1 extends BaseSlots {
       font-family: var(--fontFamily);
       font-size: 16px;
       padding: 0 12px;
+      transition: background-color 200ms;
+      border-bottom: 2px solid transparent
+    }
+    
+    slot[name="top"]::slotted(a:hover),
+    slot[name="top"]::slotted(a.selected) {
+      background-color: var(--themeColorAccent) !important;
     }
 
     main {
@@ -144,12 +152,8 @@ class Index1 extends BaseSlots {
       transform: translateX(-100%);
     }
     
-    .side-top {
-      display: flex;
-      justify-content: flex-end;
-    }
-    
     button.close {
+      align-self: flex-end;
       background-color: transparent;
       padding: 8px;
       border: none;
@@ -171,13 +175,13 @@ class Index1 extends BaseSlots {
       fill: dimGray;
     }
     
-    .side-body {
+    slot[name="side"] {
       display: flex;
       flex-direction: column;
       padding-top: 16px;
     }
 
-    .side-body > a {
+    slot[name="side"]::slotted(a) {
       color: black;
       font-family: var(--fontFamily);
       font-size: 16px;
@@ -185,7 +189,8 @@ class Index1 extends BaseSlots {
       transition: background-color 200ms, color 200ms;
     }
     
-    .side-body > a:hover {
+    slot[name="side"]::slotted(a:hover),
+    slot[name="side"]::slotted(a.selected) {
       background-color: lightGray !important;
       color: var(--themeColor);
     }
@@ -216,21 +221,15 @@ class Index1 extends BaseSlots {
           <img src="" alt="" class="logo">
           <h2 class="title">Title</h2>
         </a>
-        <div class="top close">
-          <slot name="top"></slot>
-        </div>
+        <slot name="top" class="top close"></slot>
       </header>
       <div class="side">
-        <div class="side-top">
-          <button class="close">
-            <svg viewBox="0 0 24 24">
-              <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/>
-            </svg>
-          </button>
-        </div>
-        <div class="side-body">
-          <slot name="side"></slot>
-        </div>
+        <button class="close">
+          <svg viewBox="0 0 24 24">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/>
+          </svg>
+        </button>        
+        <slot name="side"></slot>
       </div>
       <main class="close">
         <slot name="main"></slot>
@@ -240,23 +239,43 @@ class Index1 extends BaseSlots {
       </footer>
     <div>
     `;
+    new StylePlugin(this);
     // HTML elements:
     this._logoElement = this._root.querySelector('.logo');
     this._titleElement = this._root.querySelector('.title');
-    this._topElement = this._root.querySelector('.top');
+
+    this._topSlot = this._root.querySelector('slot[name="top"]');
+    this._sideSlot = this._root.querySelector('slot[name="side"]');
+    this._mainSlot = this._root.querySelector('slot[name="main"]');
+
     this._sideElement = this._root.querySelector('.side');
-    this._sideBodyElement = this._root.querySelector('.side-body');
+
     this._sideCloseElements = this._root.querySelectorAll('.close');
     this._sideToggleElements = this._root.querySelectorAll('.toggle');
+
     // Events:
     this._sideCloseElements.forEach(element => {
       element.addEventListener('click', event => {
         this.closePanel();
       });
     });
+
     this._sideToggleElements.forEach(element => {
       element.addEventListener('click', event => {
         this.togglePanel();
+      });
+    });
+
+    const navLinkClickHandler = event => {
+      this.querySelectorAll(`a[slot=${event.target.slot}]`).forEach(element => element.classList.remove('selected'));
+      event.target.classList.add('selected');
+      this.closePanel();
+    }
+
+    this._topSlot.addEventListener('slotchange', event => {
+      event.target.assignedNodes().forEach(element => {
+        // TODO: check if has handler already
+        element.addEventListener('click', navLinkClickHandler)
       });
     });
   }
@@ -295,14 +314,14 @@ class Index1 extends BaseSlots {
   }
 
   addElement({ clear = false, slot = 'main' }, ...elements) {
-
-    if (slot === 'top') {
-      elements.forEach(element => this._topElement.appendChild(element))
-      return
-    }
-    else if (slot === 'side') {
-
-
+    if (slot === 'side') {
+      elements.forEach(element => {
+        element.addEventListener('click', event => {
+          this.querySelectorAll(`a[slot=${element.slot}]`).forEach(element => element.classList.remove('selected'));
+          element.classList.add('selected');
+          this.closePanel();
+        });
+      })
     }
 
     super.addElement({ clear, slot }, ...elements)

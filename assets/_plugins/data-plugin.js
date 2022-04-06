@@ -1,7 +1,7 @@
 
 
 /*  */
-class _DataPlugin  {
+class DataPlugin  {
   #component;
   constructor(component) {
     this.#component = component;
@@ -10,4 +10,4 @@ class _DataPlugin  {
 }
 
 
-export { _DataPlugin };
+export { DataPlugin };

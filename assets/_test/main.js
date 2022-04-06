@@ -17,6 +17,7 @@ index.addElement({ slot: 'main' }, dot2);
 
 const link1 = document.createElement('A');
 link1.textContent = "Link 1";
+link1.addEventListener('click', event => log("Clicked"))
 index.addElement({ slot: 'side' }, link1);
 
 const link2 = document.createElement('A');
@@ -30,6 +31,7 @@ index.addElement({ slot: 'side' }, link3);
 
 const link4 = document.createElement('A');
 link4.textContent = "Link 4";
+link4.addEventListener('click', event => log("Clicked"))
 index.addElement({ slot: 'top' }, link4);
 
 const link5 = document.createElement('A');

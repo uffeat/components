@@ -1,7 +1,7 @@
 import { Base } from './base.js';
 
 /* Base class for components with slots and without shadow DOM. */
-class _BaseLightSlots extends _Base {
+class _BaseLightSlots extends Base {
   constructor() {
     super({shadow: false});
   }
