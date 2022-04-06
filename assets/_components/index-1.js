@@ -93,16 +93,16 @@ class Index1 extends BaseSlots {
     }
     
     slot[name="top"] {
+      box-sizing: border-box;
       height: 100%;
       margin-left: auto;
       display: flex;
       justify-content: flex-end;
-      
     }
 
     slot[name="top"]::slotted(a) {
-      box-sizing: border-box;
-      height: calc(100% + 1px);
+      position: relative;
+      height: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -112,7 +112,6 @@ class Index1 extends BaseSlots {
       font-size: 16px;
       padding: 0 12px;
       transition: background-color 200ms;
-      border-bottom: 2px solid transparent
     }
     
     slot[name="top"]::slotted(a:hover),
@@ -120,6 +119,10 @@ class Index1 extends BaseSlots {
       background-color: var(--themeColorAccent) !important;
     }
 
+    slot[name="top"]::slotted(a.selected) {
+      
+    }
+    
     main {
       flex-grow: 1;
       padding: 48px 32px;
@@ -239,14 +242,10 @@ class Index1 extends BaseSlots {
       </footer>
     <div>
     `;
-    new StylePlugin(this);
+    new StylePlugin(this)
     // HTML elements:
     this._logoElement = this._root.querySelector('.logo');
     this._titleElement = this._root.querySelector('.title');
-
-    this._topSlot = this._root.querySelector('slot[name="top"]');
-    this._sideSlot = this._root.querySelector('slot[name="side"]');
-    this._mainSlot = this._root.querySelector('slot[name="main"]');
 
     this._sideElement = this._root.querySelector('.side');
 
@@ -263,19 +262,6 @@ class Index1 extends BaseSlots {
     this._sideToggleElements.forEach(element => {
       element.addEventListener('click', event => {
         this.togglePanel();
-      });
-    });
-
-    const navLinkClickHandler = event => {
-      this.querySelectorAll(`a[slot=${event.target.slot}]`).forEach(element => element.classList.remove('selected'));
-      event.target.classList.add('selected');
-      this.closePanel();
-    }
-
-    this._topSlot.addEventListener('slotchange', event => {
-      event.target.assignedNodes().forEach(element => {
-        // TODO: check if has handler already
-        element.addEventListener('click', navLinkClickHandler)
       });
     });
   }
@@ -323,9 +309,33 @@ class Index1 extends BaseSlots {
         });
       })
     }
-
+    if (slot === 'top') {
+      elements.forEach(element => {
+        const hrElement = document.createElement('HR')
+        hrElement.style.cssText = `
+          box-sizing: border-box;
+          position: absolute
+          /*display: inline-block;*/
+          /*align-self: flex-end;*/
+          width: 100%;
+          height: 0;
+          /*top: 50%;*/
+          background-color: white;
+          border: 2px solid white;
+          /*margin-top: -2px;*/
+          transform: scaleX(1);
+          /*transform: translateX(-100%);*
+        `
+        element.appendChild(hrElement)
+        element.addEventListener('click', event => {
+          this.querySelectorAll(`a[slot=${element.slot}]`).forEach(element => element.classList.remove('selected'));
+          element.classList.add('selected');
+          this.closePanel();
+        });
+        
+      })
+    }
     super.addElement({ clear, slot }, ...elements)
-
   }
 
 }

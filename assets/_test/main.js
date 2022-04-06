@@ -28,7 +28,21 @@ const link3 = document.createElement('A');
 link3.textContent = "Link 3";
 index.addElement({ slot: 'side' }, link3);
 
+const link4 = new components.Link({text: "Link 4", style: 'v1'});
+index.addElement({ slot: 'top' }, link4);
 
+const link5 = new components.Link({text: "Link 5", style: 'v1'});
+index.addElement({ slot: 'top' }, link5);
+
+const link6 = new components.Link({text: "Link 6", style: 'v1'});
+index.addElement({ slot: 'top' }, link6);
+
+const link7 = document.createElement('A');
+link7.textContent = "Link 7";
+index.addElement({ slot: 'top' }, link7);
+
+
+/*
 const link4 = document.createElement('A');
 link4.textContent = "Link 4";
 link4.addEventListener('click', event => log("Clicked"))
@@ -38,10 +52,8 @@ const link5 = document.createElement('A');
 link5.textContent = "Link 5";
 index.addElement({ slot: 'top' }, link5);
 
-const link6 = document.createElement('A');
-link6.textContent = "Link 6";
-index.addElement({ slot: 'top' }, link6);
 
+*/
 
 
 
