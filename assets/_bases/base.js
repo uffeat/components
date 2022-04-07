@@ -10,7 +10,6 @@ class Base extends HTMLElement {
     if (shadow) {
       this._root = this.attachShadow({
         mode: 'open',
-        // delegatesFocus: true
       });
     }
     else {
