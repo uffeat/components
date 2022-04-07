@@ -26,34 +26,31 @@ class Link extends Base {
           text-decoration: none;
         }
 
-        :host(.h1) a {
+        :host(.v1) a {
+          display: block;
           color: black;
           padding: 8px 16px;
           transition: background-color 200ms, color 200ms;
         }
 
-        :host(.h1) a:hover {
-          background-color: lightGray !important;
-          color: var(--themeColor);
-        }
-
-        :host(.h1) a:focus, 
+        :host(.v1) a:hover,
+        :host(.v1) a:focus, 
         :host(.h1) a.selected {
           background-color: lightGray !important;
           color: var(--themeColor);
         }
 
-        :host(.h1) hr {
+        :host(.v1) hr {
           display: none;
         }
         
-        :host(.v1) {
+        :host(.h1) {
           --paddingH: 8px;
           --hrBorderWidth: 2px;
           --transitionTime: 200ms;
         }
 
-        :host(.v1) a {
+        :host(.h1) a {
           display: flex;
           justify-content: center;
           align-items: center;
@@ -64,11 +61,11 @@ class Link extends Base {
           transition: background-color var(--transitionTime);
         }
         
-        :host(.v1) a:hover {
+        :host(.h1) a:hover {
           background-color: var(--themeColorAccent);
         }
         
-        :host(.v1) hr {
+        :host(.h1) hr {
           height: 0;
           background-color: white;
           border: var(--hrBorderWidth) solid white;
@@ -76,13 +73,13 @@ class Link extends Base {
           transform: scaleX(0);
         }
 
-        :host(.v1) a:active ~ hr {
+        :host(.h1) a:active ~ hr {
           transition: transform var(--transitionTime) ease-out;
           transform: scaleX(1);
         }
 
-        :host(.v1) a.selected ~ hr,
-        :host(.v1) a:focus ~ hr {
+        :host(.h1) a.selected ~ hr,
+        :host(.h1) a:focus ~ hr {
           transform: scaleX(1);
         }
       </style>

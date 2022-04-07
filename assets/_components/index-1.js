@@ -194,7 +194,7 @@ class Index1 extends BaseSlots {
             <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/>
           </svg>
         </button>        
-        <slot name="side"></slot>
+        <slot name="side" class="close"></slot>
       </div>
       <main class="close">
         <slot name="main"></slot>
@@ -261,18 +261,12 @@ class Index1 extends BaseSlots {
     }
   }
 
-  addComponent(component, { clear = false, slot = 'main' }) {
-    /*
-    if (slot === 'side') {
-      component.addEventListener('click', event => {
-        this.querySelectorAll(`a[slot=${component.slot}]`).forEach(component => component.deselect());
-        component.select();
-        this.closePanel();
-      });
-    }
-    */
-
-    super.addComponent(component, { clear, slot })
+  // TODO: Somehow activate from the component's 'focus component state'.
+  linkFocusHandler(event) {
+    const selected = 42;
+    const siblings = this.querySelectorAll(`a[slot=${component.slot}]`);
+    siblings.forEach(component => component.deselect());
+    selected.select()
   }
 
 }
