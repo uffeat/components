@@ -7,11 +7,10 @@ TODO:
 - Deal with icons.
 */
 
-/* Component for hyper link. */
-class Link extends Base {
-  constructor({ href, style, text }) {
+/* Component horizontal navigation links. */
+class NavLinkH extends Base {
+  constructor({ href, text }) {
     super({});
-    this.classList.add(style);
     this.html = `
       <style>
         :host {
@@ -24,62 +23,35 @@ class Link extends Base {
           font-family: var(--fontFamily);
           font-size: 16px;
           text-decoration: none;
-        }
-
-        :host(.v1) a {
-          display: block;
-          color: black;
-          padding: 8px 16px;
-          transition: background-color 200ms, color 200ms;
-        }
-
-        :host(.v1) a:hover,
-        :host(.v1) a:focus, 
-        :host(.h1) a.selected {
-          background-color: lightGray !important;
-          color: var(--themeColor);
-        }
-
-        :host(.v1) hr {
-          display: none;
-        }
-        
-        :host(.h1) {
-          --paddingH: 8px;
-          --hrBorderWidth: 2px;
-          --transitionTime: 200ms;
-        }
-
-        :host(.h1) a {
           display: flex;
           justify-content: center;
           align-items: center;
           height: 100%;
           white-space: nowrap;
           color: white;
-          padding: 0 var(--paddingH);          
-          transition: background-color var(--transitionTime);
+          padding: 0 8px;          
+          transition: background-color 200ms;
         }
         
-        :host(.h1) a:hover {
+        a:hover {
           background-color: var(--themeColorAccent);
         }
         
-        :host(.h1) hr {
+        hr {
           height: 0;
           background-color: white;
-          border: var(--hrBorderWidth) solid white;
-          margin-top: calc(-1*var(--hrBorderWidth));
+          border: 2px solid white;
+          margin-top: -2px;
           transform: scaleX(0);
         }
 
-        :host(.h1) a:active ~ hr {
-          transition: transform var(--transitionTime) ease-out;
+        a:active ~ hr {
+          transition: transform 200ms ease-out;
           transform: scaleX(1);
         }
 
-        :host(.h1) a.selected ~ hr,
-        :host(.h1) a:focus ~ hr {
+        a.selected ~ hr,
+        a:focus ~ hr {
           transform: scaleX(1);
         }
       </style>
@@ -114,7 +86,7 @@ class Link extends Base {
   }
 }
 
-const componentTag = `${settings.prefix}-link`;
-customElements.get(componentTag) || customElements.define(componentTag, Link);
+const componentTag = `${settings.prefix}-nav-link-h`;
+customElements.get(componentTag) || customElements.define(componentTag, NavLinkH);
 
-export { Link };
+export { NavLinkH };

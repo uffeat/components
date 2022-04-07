@@ -15,23 +15,18 @@ const dot2 = new components.Dot();
 index.addComponent(dot2, { slot: 'main' });
 
 
-const link1 = new components.Link({text: "Link 1", style: 'v1'});
-index.addComponent(link1, { slot: 'side' });
+const navLinkV1 = new components.NavLinkV({text: "V1"});
+index.addComponent(navLinkV1, { slot: 'side' });
 
-const link2 = new components.Link({text: "Link 2", style: 'v1'});
-index.addComponent(link2, { slot: 'side' });
+const navLinkV2 = new components.NavLinkV({text: "V2"});
+index.addComponent(navLinkV2, { slot: 'side' });
 
 
+const navLinkH1 = new components.NavLinkH({text: "H1"});
+index.addComponent(navLinkH1, { slot: 'top' });
 
-const link4 = new components.Link({text: "Link 4", style: 'h1'});
-index.addComponent(link4, { slot: 'top' });
-
-const link5 = new components.Link({text: "Link 5", style: 'h1'});
-index.addComponent(link5, { slot: 'top' });
-
-const link6 = new components.Link({text: "Link 6", style: 'h1'});
-index.addComponent(link6, { slot: 'top' });
-
+const navLinkH2 = new components.NavLinkH({text: "H2"});
+index.addComponent(navLinkH2, { slot: 'top' });
 
 
 

@@ -1,7 +1,7 @@
 {
   "liveServer.settings.port": 5501,
   "files.autoSave": "afterDelay",
-  "editor.fontSize": 15,
+  "editor.fontSize": 17,
   "editor.fontFamily": "'JetBrains Mono', 'monospace'",
   "editor.tabSize": 2,
   "workbench.colorTheme": "Mud (rainglow)"
