@@ -14,12 +14,13 @@ class Button extends _Base {
         overflow: hidden;
         background-color: var(--themeColor);
         color: var(--white);
+        font-family: var(--fontFamily);
         font-size: 16px;
         text-transform: uppercase;
         padding: 12px 18px;
         border: none;
         border-radius: 2px;
-        box-shadow: var(--boxShadow0);
+        box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
         outline: none;
       }
 
@@ -27,11 +28,11 @@ class Button extends _Base {
       input[type="submit"]:hover,
       input[type="reset"]:hover,
       button:hover {
-        background-color: var(--themeColorDark);
+        background-color: var(--themeColorAccent);
       }
 
       button {
-        /* Enable position absolute for span ripple element for JapButton: */
+        /* Enable position absolute for span ripple element: */
         position: relative;
         cursor: pointer;
         transition: background 400ms;

@@ -1,6 +1,5 @@
 import { settings } from '../_settings.js'
 import { Base } from '../_bases/base.js'
-import { StylePlugin } from '../_plugins/style-plugin.js'
 
 /* 
 TODO:
@@ -12,34 +11,27 @@ class NavLinkV extends Base {
   constructor({ href, text }) {
     super({});
     this.html = `
-      <style>
-        :host {
-          --fontFamily: 'Verdana', sans-serif;
-          --themeColor: darkBlue;
-          --themeColorAccent: blue;
-        }
+    <style>
+      a {
+        display: block;
+        color: black;
+        font-family: var(--fontFamily);
+        font-size: 16px;
+        text-decoration: none;
+        padding: 8px 16px;
+        transition: background-color 200ms, color 200ms;
+      }
 
-        a {
-          display: block;
-          color: black;
-          font-family: var(--fontFamily);
-          font-size: 16px;
-          text-decoration: none;
-          padding: 8px 16px;
-          transition: background-color 200ms, color 200ms;
-        }
+      a:hover,
+      a:focus, 
+      a.selected {
+        background-color: lightGray !important;
+        color: var(--themeColor);
+      }
 
-        a:hover,
-        a:focus, 
-        a.selected {
-          background-color: lightGray !important;
-          color: var(--themeColor);
-        }
-
-      </style>
-      <a href="#" class="text"></a>
+    </style>
+    <a href="#" class="text"></a>
     `;
-    new StylePlugin(this)
     this._aElement = this._root.querySelector('a');
     this._textElement = this._root.querySelector('.text');
     this.text = text || '';

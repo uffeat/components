@@ -1,6 +1,5 @@
 import { settings } from '../_settings.js'
 import { Base } from '../_bases/base.js'
-import { StylePlugin } from '../_plugins/style-plugin.js'
 
 /* 
 TODO:
@@ -12,53 +11,46 @@ class NavLinkH extends Base {
   constructor({ href, text }) {
     super({});
     this.html = `
-      <style>
-        :host {
-          --fontFamily: 'Verdana', sans-serif;
-          --themeColor: darkBlue;
-          --themeColorAccent: blue;
-        }
+    <style>
+      a {
+        font-family: var(--fontFamily);
+        font-size: 16px;
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        white-space: nowrap;
+        color: white;
+        padding: 0 8px;          
+        transition: background-color 200ms;
+      }
+      
+      a:hover {
+        background-color: var(--themeColorAccent);
+      }
+      
+      hr {
+        height: 0;
+        background-color: white;
+        border: 2px solid white;
+        margin-top: -2px;
+        transform: scaleX(0);
+      }
 
-        a {
-          font-family: var(--fontFamily);
-          font-size: 16px;
-          text-decoration: none;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 100%;
-          white-space: nowrap;
-          color: white;
-          padding: 0 8px;          
-          transition: background-color 200ms;
-        }
-        
-        a:hover {
-          background-color: var(--themeColorAccent);
-        }
-        
-        hr {
-          height: 0;
-          background-color: white;
-          border: 2px solid white;
-          margin-top: -2px;
-          transform: scaleX(0);
-        }
+      a:active ~ hr {
+        transition: transform 200ms ease-out;
+        transform: scaleX(1);
+      }
 
-        a:active ~ hr {
-          transition: transform 200ms ease-out;
-          transform: scaleX(1);
-        }
-
-        a.selected ~ hr,
-        a:focus ~ hr {
-          transform: scaleX(1);
-        }
-      </style>
-      <a href="#" class="text"></a>
-      <hr>
+      a.selected ~ hr,
+      a:focus ~ hr {
+        transform: scaleX(1);
+      }
+    </style>
+    <a href="#" class="text"></a>
+    <hr>
     `;
-    new StylePlugin(this)
     this._aElement = this._root.querySelector('a');
     this._textElement = this._root.querySelector('.text');
     this.text = text || '';

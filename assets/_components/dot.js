@@ -23,7 +23,7 @@ class Dot extends Base {
     this._dotElement = this._root.querySelector('span');
     // Defaults:
     this.backgroundColor = getCssVar('themeColor') || 'red';
-    this.borderColor = getCssVar('themeColorAlt')  || 'yellow';
+    this.borderColor = getCssVar('themeColorAccent')  || 'yellow';
     this.size = 48;
     this.textColor = getCssVar('black') || 'black';
   }

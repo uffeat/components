@@ -1,7 +1,5 @@
 import { settings } from '../_settings.js'
 import { BaseSlots } from '../_bases/base-slots.js';
-import { StylePlugin } from '../_plugins/style-plugin.js'
-
 
 /* Implements index component with left slide panel. */
 class Index1 extends BaseSlots {
@@ -10,9 +8,6 @@ class Index1 extends BaseSlots {
     this.html = `
     <style>    
     :host {
-      --fontFamily: 'Verdana', sans-serif;
-      --themeColor: darkBlue;
-      --themeColorAccent: blue;
       --headerHeight: 70px;
       --sideWidth: 300px;
       --sideTransitionTime: 400ms;
@@ -204,7 +199,6 @@ class Index1 extends BaseSlots {
       </footer>
     <div>
     `;
-    new StylePlugin(this)
     // HTML elements:
     this._logoElement = this._root.querySelector('.logo');
     this._titleElement = this._root.querySelector('.title');
