@@ -1,0 +1,29 @@
+{
+  "name": "components",
+  "version": "1.0.0",
+  "description": "Collection of web components",
+  "source": "components.js",
+  "main": "dist/main.js",
+  "module": "dist/components.js",
+  "scripts": {
+    "watch": "parcel watch",
+    "build": "parcel build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uffeat/components.git"
+  },
+  "author": "Rufus",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uffeat/components/issues"
+  },
+  "homepage": "https://github.com/uffeat/components#readme",
+  "devDependencies": {
+    "parcel": "^2.4.1"
+  },
+  "browserslist": "> 2%, last 2 years, not dead",
+  "dependencies": {
+    "@swc/helpers": "^0.3.8"
+  }
+}
