@@ -1,4 +1,4 @@
-import { _Base } from './_jap-base.js';
+import { _Base } from './_jap-base.js.js.js';
 import { getCssVar } from '../utils/style-utils.js';
 
 /* Component for Google icons */

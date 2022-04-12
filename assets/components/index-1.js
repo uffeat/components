@@ -1,5 +1,5 @@
-import { settings } from '../_settings.js'
-import { BaseSlots } from '../_bases/base-slots.js';
+import { settings } from '../settings.js'
+import { BaseSlots } from '../bases/base-slots.js';
 
 /* Implements index component with left slide panel. */
 class Index1 extends BaseSlots {

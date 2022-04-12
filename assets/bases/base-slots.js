@@ -1,5 +1,5 @@
 import { Base } from './base.js';
-import { settings } from '../_settings.js';
+import { settings } from '../settings.js';
 
 
 /* Base class for components with shadow DOM and slots. */

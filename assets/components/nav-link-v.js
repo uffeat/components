@@ -1,5 +1,5 @@
-import { settings } from '../_settings.js'
-import { Base } from '../_bases/base.js'
+import { settings } from '../settings.js'
+import { Base } from '../bases/base.js'
 
 /* 
 TODO:

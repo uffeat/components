@@ -1,4 +1,4 @@
-import { settings } from '../_settings.js'
+import { settings } from '../settings.js'
 
 /* Base class for components with or without shadow DOM and no slots. */
 class Base extends HTMLElement {
@@ -32,7 +32,7 @@ class Base extends HTMLElement {
   set html(html) {
     // Clear this._root so that any child elements's event listeners are removed (to avoid memory leak):
     while (this._root.firstChild) {
-      this._root.removeChild(this._root.firstChild);
+      this._root.firstChild.remove();
     }
     this._root.innerHTML = html || '';  // Falsy html results in empty html (and not e.g., 'undefined').
   }
