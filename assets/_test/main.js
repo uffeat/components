@@ -1,4 +1,5 @@
-import * as components from '../../components.js';
+//import * as components from '../../components.js';
+import * as components from '/home/uffe/Documents/projects/_components/components/dist/components.js'
 
 const log = console.log;
 
