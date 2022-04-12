@@ -1,6 +1,7 @@
 # Install
 npm init
 npm install parcel --save-dev
+npm install @swc/helpers --save-dev
 
 # Add source etc. to package.json (e.g., below the "name" line)
 "source": "components.js",
