@@ -1,2 +1,2 @@
-# jap_components
- jap_components
+# Components
+ Collection of web components.
