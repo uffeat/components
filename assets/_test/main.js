@@ -1,5 +1,4 @@
-//import * as components from '../../components.js';
-import * as components from '/home/uffe/Documents/projects/_components/components/dist/components.js'
+import * as components from '../../components.js';
 
 const log = console.log;
 
@@ -15,20 +14,15 @@ index.addComponent(dot1, { slot: 'main' });
 const dot2 = new components.Dot();
 index.addComponent(dot2, { slot: 'main' });
 
-
 const navLinkV1 = new components.NavLinkV({text: "V1"});
 index.addComponent(navLinkV1, { slot: 'side' });
 
 const navLinkV2 = new components.NavLinkV({text: "V2"});
 index.addComponent(navLinkV2, { slot: 'side' });
 
-
 const navLinkH1 = new components.NavLinkH({text: "H1"});
 index.addComponent(navLinkH1, { slot: 'top' });
 
 const navLinkH2 = new components.NavLinkH({text: "H2"});
 index.addComponent(navLinkH2, { slot: 'top' });
-
-
-
 

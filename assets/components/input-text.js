@@ -1,4 +1,4 @@
-import { settings } from '../_setings.js'
+import { settings } from '../setings.js'
 import { _Base } from '../_bases/_base.js';
 
 /* Component text input */

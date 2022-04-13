@@ -27,7 +27,7 @@ class Index1 extends BaseSlots {
       display: flex;
       align-items: center;
       color: white;
-      background-color: var(--themeColor);
+      background-color: var(--themeColor), red;
       padding: 0 32px;
       box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
     }
