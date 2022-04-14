@@ -26,8 +26,8 @@ class Index1 extends BaseSlots {
       height: var(--headerHeight);
       display: flex;
       align-items: center;
-      color: white;
-      background-color: var(--themeColor), red;
+      color: var(--baseColor, white);
+      background-color: var(--themeColor, red);
       padding: 0 32px;
       box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
     }
@@ -38,14 +38,13 @@ class Index1 extends BaseSlots {
       align-items: center;
       font-size: 32px;
       background-color: transparent;
-      color: white;
       padding: 0 8px;
       border: none;
       transition: background-color 400ms;
     }
     
     .menu:hover {
-      background-color: var(--themeColorAccent);
+      background-color: var(--themeColorAccent, pink);
     }
 
     .menu > svg {
@@ -54,7 +53,7 @@ class Index1 extends BaseSlots {
     }
 
     .menu > svg > path {
-      fill: white;
+      fill: var(--baseColor, white);
       stroke: transparent;
     }
 
@@ -62,17 +61,10 @@ class Index1 extends BaseSlots {
       display: flex;
       align-items: center;
       height: 100%;
-      color: inherit;
       text-decoration: none;
       padding: 0 8px;
       transition: background-color 400ms;
     }
-
-    /*
-    a.home:hover {
-      background-color: var(--themeColorAccent);
-    }
-    */
     
     .logo {
       height: 60%;
