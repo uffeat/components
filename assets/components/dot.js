@@ -6,8 +6,9 @@ class Dot extends Component {
   #size;
   constructor() {
     super()
+    //<link rel="stylesheet" href="assets/components/dot.css">
     this.html = `
-    <link rel="stylesheet" href="assets/components/dot.css">
+    
     <span></span>
     `
     this._dotElement = this._root.querySelector('span')
