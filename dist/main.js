@@ -99,8 +99,9 @@ var _size = /*#__PURE__*/ new WeakMap();
             writable: true,
             value: void 0
         });
+        //<link rel="stylesheet" href="assets/components/dot.css">
         this.html = `
-    <link rel="stylesheet" href="assets/components/dot.css">
+    
     <span></span>
     `;
         this._dotElement = this._root.querySelector('span');
