@@ -1,6 +1,5 @@
 const settings = {
-  prefix: 'jap',
-  domClass: 'jap-component',
+  prefix: 'x',
 }
 
 export { settings };

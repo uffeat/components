@@ -23,5 +23,8 @@
     "@swc/helpers": "^0.3.8",
     "parcel": "^2.4.1"
   },
-  "browserslist": "> 2%, last 2 years, not dead"
+  "browserslist": "> 2%, last 2 years, not dead",
+  "dependencies": {
+    "material-design-icons": "^3.0.1"
+  }
 }
