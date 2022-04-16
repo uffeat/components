@@ -8,7 +8,15 @@ class Dot extends Component {
     super()
     //<link rel="stylesheet" href="assets/components/dot.css">
     this.html = `
-    
+    <style>
+      span {
+        display: inline-block;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background-color: var(--themeColor, red);
+      }
+    </style>
     <span></span>
     `
     this._dotElement = this._root.querySelector('span')

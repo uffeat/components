@@ -1,10 +1,10 @@
 import { settings } from '../setings.js'
-import { _Base } from '../_bases/_base.js';
+import { Component } from '../base/component.js';
 
 /* Component text input */
-class InputText extends _Base {
-  constructor() {
-    super({value});
+class InputText extends Component {
+  constructor({value}) {
+    super();
     this.html = `
     <style>
       :host {
@@ -86,11 +86,11 @@ class InputText extends _Base {
       <span class="prompt">Prompt</span>
       <span class="msg"></span>
     </label>
-    `;
+    `
     // HTML elements:
-    this._inputElement = this._root.querySelector('input');
+    this._inputElement = this._root.querySelector('input')
     // Events:
-    this._inputElement.addEventListener('change', this._changeHandler.bind(this));
+    this._inputElement.addEventListener('change', this._changeHandler.bind(this))
     // Args:
     this.value = value;
   }

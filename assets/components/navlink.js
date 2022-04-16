@@ -1,18 +1,18 @@
 import { settings } from '../settings.js'
-import { Base } from '../bases/base.js'
+import { Component } from '../base/component.js';
 
 /* 
 TODO:
 - Deal with icons.
 */
 
-/* Component horizontal navigation links. */
-class NavLinkH extends Base {
+/* Component navigation links. */
+class Navlink extends Component {
   constructor({ href, text }) {
-    super({});
+    super();
     this.html = `
     <style>
-      a {
+    :host([horizontal]) a {
         font-family: var(--fontFamily);
         font-size: 16px;
         text-decoration: none;
@@ -26,11 +26,11 @@ class NavLinkH extends Base {
         transition: background-color 200ms;
       }
       
-      a:hover {
+      :host([horizontal]) a:hover {
         background-color: var(--themeColorAccent);
       }
       
-      hr {
+      :host([horizontal]) hr {
         height: 0;
         background-color: white;
         border: 2px solid white;
@@ -38,14 +38,35 @@ class NavLinkH extends Base {
         transform: scaleX(0);
       }
 
-      a:active ~ hr {
+      :host([horizontal]) a:active ~ hr {
         transition: transform 200ms ease-out;
         transform: scaleX(1);
       }
 
-      a.selected ~ hr,
-      a:focus ~ hr {
+      :host([horizontal]) a.selected ~ hr,
+      :host([horizontal]) a:focus ~ hr {
         transform: scaleX(1);
+      }
+
+      :host([vertical]) a {
+        display: block;
+        color: black;
+        font-family: var(--fontFamily);
+        font-size: 16px;
+        text-decoration: none;
+        padding: 8px 16px;
+        transition: background-color 200ms, color 200ms;
+      }
+
+      :host([vertical]) a:hover,
+      :host([vertical]) a:focus, 
+      :host([vertical]) a.selected {
+        background-color: lightGray !important;
+        color: var(--themeColor);
+      }
+
+      :host([vertical])  hr {
+        display: none;
       }
     </style>
     <a href="#" class="text"></a>
@@ -78,7 +99,7 @@ class NavLinkH extends Base {
   }
 }
 
-const componentTag = `${settings.prefix}-nav-link-h`;
-customElements.get(componentTag) || customElements.define(componentTag, NavLinkH);
+const componentTag = `${settings.prefix}-navlink`;
+customElements.get(componentTag) || customElements.define(componentTag, Navlink);
 
-export { NavLinkH };
+export { Navlink };

@@ -1,8 +1,8 @@
 import { settings } from '../_setings.js'
-import { _Base } from '../_bases/_base.js';
+import { Component } from '../base/component.js';
 
 /* Component for button with ripple effect */
-class Button extends _Base {
+class Button extends Component {
   constructor({text}) {
     super({});
     this.html = `
